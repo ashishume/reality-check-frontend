@@ -1,0 +1,12 @@
+.row {
+  margin: 0 auto;
+  text-align: center;
+}
+.mat-raised-button {
+  background-color: #1e804a;
+}
+
+.answer{
+ max-height: 450px;
+ overflow: auto;
+}

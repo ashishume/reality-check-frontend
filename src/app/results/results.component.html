@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="inline-container">
+        <img src="../../assets/completed.png">
+        <h3>You have completed the test</h3>
+        <mat-card>
+          <p>
+            Your score is <b>{{score}}</b>
+          </p>
+          <!-- <p>
+            You have done <b>{{countOfCorrectAnswers}}</b> out of 40 correct answers
+          </p> -->
+          <a routerLink="/dashboard">Go to Dashboard</a>
+          <br>
+          <br>
+          <button mat-raised-button (click)="showAnswers()">
+            View Right Answers
+          </button>
+        </mat-card>
+
+        <div class="responsive" *ngIf="displayAnswer"> 
+          <table class="table table-bordered">
+            <tr>
+              <td>Q. No.</td>
+              <td>Correct Answer</td>
+            </tr>
+            <tr *ngFor="let ans of viewAnswerDetails">
+              <td>{{ans.questionNumber}}</td>
+              <td>{{ans.correctAnswer}}</td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

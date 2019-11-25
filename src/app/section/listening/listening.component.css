@@ -1,0 +1,9 @@
+.row {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.answer {
+  max-height: 450px;
+  overflow: auto;
+}

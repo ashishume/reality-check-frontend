@@ -1,0 +1,9 @@
+.danger {
+  border: solid 1px red;
+  padding: 20px;
+  text-align: center;
+}
+.danger-zone{
+    color: red;
+    font-weight: 600;
+}

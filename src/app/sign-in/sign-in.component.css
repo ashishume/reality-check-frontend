@@ -1,0 +1,15 @@
+#column{
+    text-align: center;
+}
+.jumbotron{
+    background-color: white;
+    text-align: center;
+}
+
+.signin{
+    font-size: 15px;
+    padding: 10px;
+    width: 200px;
+    color: white;
+    background-color: cornflowerblue;
+}

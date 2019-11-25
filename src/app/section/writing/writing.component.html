@@ -1,0 +1,104 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Writing Section (Upload Document)</h2>
+            <button mat-raised-button color="primary">Download PDF</button>
+        </div>
+        <div class="col-sm-6">
+            <h2>Enter Answers </h2>
+            <div class="answer">
+
+                <div *ngFor="let list of answerDetails">
+                    <mat-form-field>
+                        <mat-label>{{list.QNumber}}</mat-label>
+                        <input class="input-field" matInput [(ngModel)]="list.QValue" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-raised-button color="accent" (click)="onSubmitAnswerForm()">Submit <i class="material-icons">
+                    play_arrow
+                </i></button>
+
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="disable-text-selection">
+    <div id="container">
+        <div class="row">
+            <!-- <button mat-raised-button color="primary" (click)="testCompleted()" id="submit-button">Submit</button> -->
+
+            <!-- <mat-tab-group class="mat-tab-groups" mat-align-tabs="center"> -->
+
+            <div class="col-sm-12">
+                <!-- SECTION 1 -->
+                <div class="section1-content">
+                    <!-- <mat-tab class="mat-tab1" label="Section 1"> -->
+
+                    <div class="row">
+                        <div class="col-sm-6" id="paragraph-section">
+
+
+                            <h2>Writing Section (Upload Document)</h2>
+                            <a target="_blank" [href]="pdfLink">
+                                <button mat-raised-button color="accent">Download PDF</button>
+                            </a>
+
+                        </div>
+                        <div class="col-sm-6" id="question-section">
+                            <br>
+                            <br>
+                            <div style="text-align: center">
+
+
+
+                                <form class="form" [formGroup]="UploadForm" autocomplete="off" novalidate
+                                    #UploadFormData="ngForm" (ngSubmit)="onSubmitUploadForm1(UploadFormData)">
+
+                                    <p style="text-align: center;" class="alert alert-warning">Note: If you have
+                                        multiple sheets,
+                                        please
+                                        upload them in order</p>
+                                    <mat-form-field>
+                                        <mat-label>Sheet Number</mat-label>
+                                        <input matInput formControlName="sheetNumber" required name="sheetNumber"
+                                            type="number">
+                                    </mat-form-field>&nbsp;
+
+                                    <input type="file" formControlName="upload" name="upload" required accept="image/*"
+                                        (change)="onFileSelected($event)">
+                                    <br>
+                                    <br>
+                                    <span *ngIf="imageSource">
+                                        <img [src]="imageSource" style="height: 300px;width:200px">
+                                    </span>
+                                    <br>
+                                    <br>
+
+                                    <button style="width:100%;" color="primary" mat-raised-button type="submit"
+                                        [disabled]="!UploadForm.valid">Upload</button>
+                                </form>
+
+
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <button color="accent" mat-raised-button routerLink="/">Test Done</button>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- </mat-tab> -->
+                </div>
+            </div>
+
+            <!-- </mat-tab-group> -->
+
+        </div>
+    </div>
+</div>

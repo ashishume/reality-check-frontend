@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <a routerLink="/admin-panel">Back</a>
+            <h2>Create User</h2>
+            <form class="form" [formGroup]="CreateUserFormGroup" autocomplete="off" #LoginForm="ngForm"
+                (ngSubmit)="onSubmitLoginForm(LoginForm)">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput name="name" formControlName="name" [(ngModel)]="name">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput name="username" formControlName="username" [(ngModel)]="username">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="text" name="password" formControlName="password" [(ngModel)]="password">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>User Type</mat-label>
+                    <mat-select name="userType" formControlName="userType" [(ngModel)]="userType">
+                        <mat-option [value]="userType" *ngFor="let userType of userTypes">
+                            {{userType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+
+
+                <button mat-raised-button type="submit" [disabled]="!CreateUserFormGroup.valid" style="width: 100%"
+                    color="primary">Create User</button>
+                <br>
+                <br>
+
+            </form>
+        </div>
+
+        <div class="col-sm-8">
+            <h2>View User</h2>
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Name</td>
+                        <td>Username</td>
+                        <td>Password</td>
+                        <td>User Type</td>
+                        <td>User Created</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr *ngFor="let user of userDetails">
+                        <td>{{user.name}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.password}}</td>
+                        <td>{{user.userType}}</td>
+                        <td>{{user.createdAt | date}}</td>
+                        <td>
+                            <i (click)="onEditUser(user)" class="material-icons">
+                                edit
+                            </i>
+                        </td>
+                        <td>
+                            <i (click)="onDeleteUser(user)" class="material-icons">
+                                delete_outline
+                            </i>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

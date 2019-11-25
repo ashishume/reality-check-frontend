@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Reading Section</h2>
+            <a target="_blank" [href]="pdfLink">
+                <button mat-raised-button color="accent">Download PDF</button>
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <h2>Enter Answers </h2>
+            <div class="answer">
+
+                <div *ngFor="let list of answerDetails">
+                    <mat-form-field>
+                        <mat-label>{{list.QNumber}}</mat-label>
+                        <input class="input-field" matInput [(ngModel)]="list.QValue" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-raised-button color="accent" (click)="onSubmitAnswerForm()">Submit <i class="material-icons">
+                    play_arrow
+                </i></button>
+
+        </div>
+    </div>
+</div>

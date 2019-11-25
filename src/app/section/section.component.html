@@ -1,0 +1,64 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a routerLink="/dashboard">Back</a>
+      <h4>Please choose the sections</h4>
+      <mat-card *ngIf="!listening" id="mat-card" class="mat-card" (click)="handlingListening()">
+        <img src="../../assets/headphone.svg" class="icon">
+        Listening
+        <span id="float-item">
+          <img src="../../assets/arrow.svg" class="icon">
+        </span>
+      </mat-card>
+
+      <!-- LOCKED -->
+      <mat-card *ngIf="listening" id="mat-card" class="mat-card" (click)="checkTestHandler()">
+        <img src="../../assets/headphone.svg" class="icon">
+        Listening
+        <span id="float-item">
+          <img src="../../assets/lock.svg" class="icon">
+        </span>
+      </mat-card>
+
+
+
+
+      <mat-card *ngIf="!writing" id="mat-card" class="mat-card" (click)="handlingWriting()">
+        <img src="../../assets/writing.svg" class="icon">
+        Writing
+        <span id="float-item">
+          <img src="../../assets/arrow.svg" class="icon">
+        </span>
+      </mat-card>
+
+      <!-- LOCKED -->
+      <mat-card *ngIf="writing" id="mat-card" class="mat-card" (click)="checkTestHandler()">
+        <img src="../../assets/writing.svg" class="icon">
+        Writing
+        <span id="float-item">
+          <img src="../../assets/lock.svg" class="icon">
+        </span>
+      </mat-card>
+
+      <mat-card *ngIf="!reading" id="mat-card" class="mat-card" (click)="handlingReading()">
+        <img src="../../assets/reading.svg" class="icon">
+        Reading
+        <span id="float-item">
+          <img src="../../assets/arrow.svg" class="icon">
+        </span>
+      </mat-card>
+
+      <!-- LOCKED -->
+      <mat-card *ngIf="reading" id="mat-card" class="mat-card" (click)="checkTestHandler()">
+        <img src="../../assets/reading.svg" class="icon">
+        Reading
+        <span id="float-item">
+          <img src="../../assets/lock.svg" class="icon">
+        </span>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+<!-- <a (click)="showIssueForm()" class="footer">Please raise any issue</a> -->

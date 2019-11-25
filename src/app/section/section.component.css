@@ -1,0 +1,23 @@
+.footer {
+  position: fixed;
+  bottom: 20px;
+  left: 40%;
+  cursor: pointer;
+  border: solid 1px gray;
+  padding: 5px 10px;
+}
+
+#mat-card {
+  margin: 20px 0;
+}
+.icon{
+  width:20px;
+}
+
+#float-item{
+  float: right;
+}
+.mat-card:hover{
+  background-color: lightblue;
+  cursor: pointer;
+}

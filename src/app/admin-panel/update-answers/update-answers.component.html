@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <span>Update Answer</span>
+      <mat-form-field appearance="outline">
+        <mat-label>Update Answer</mat-label>
+        <input matInput [(ngModel)]='updatedAnswer'>
+      </mat-form-field>
+      <br>
+      <span>Test Number</span>&nbsp;
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Test Number" disabled [(ngModel)]="testNumber">
+          <mat-option *ngFor="let list of countTests" [value]="list">{{list}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <span>Question No.</span>&nbsp;
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Question Number" disabled [(ngModel)]="questionNumber">
+          <mat-option *ngFor="let list of questionData" [value]="list.questionNumber">{{list.questionNumber}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <span>Section</span>&nbsp;
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="section" disabled placeholder="Section">
+          <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button (click)="onSubmitUpdateAnswer()" color="primary">Update</button>
+      <button mat-raised-button mat-dialog-close>Close</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="table-responsive">
+
+        <table class="table" style="margin: 0 auto;" *ngIf="studentDetails.length">
+
+          <tr class="table-primary">
+            <td>Name</td>
+            <td>Username</td>
+            <td>Test Number</td>
+            <td>Sheet Number</td>
+            <td>Marks Band</td>
+            <td>Section</td>
+            <td>Question</td>
+            <td>Answer Image</td>
+            <td>is Checked</td>
+            <td>Update Marks</td>
+            <!-- <td></td>
+          <td>Submitted On</td> -->
+          </tr>
+          <tr style="text-align: center;" *ngFor="let list of studentDetails">
+            <td>{{list.name}}</td>
+            <td>{{list.username}}</td>
+            <td>{{list.testNumber}}</td>
+            <td>{{list.sheetNumber}}</td>
+            <td>{{list.marksBand}}</td>
+            <td>{{list.section}}</td>
+            <td>
+
+              <a [href]="list.pdfUrl" target="_blank">Question</a>
+            </td>
+            <td>
+              <img [src]="list.imageUrl" style="height: 200px;width:150px">
+              <a [href]="list.imageUrl" target="_blank">Download</a>
+            </td>
+            <td>
+              <span *ngIf="list.isChecked">
+                <img src="../../../assets/tick.png">
+              </span>
+              <span *ngIf="!list.isChecked">
+                <img src="../../../assets/error.png">
+              </span>
+            </td>
+            <td>
+              <span *ngIf="!list.isChecked">
+
+                <i class="material-icons" (click)="updateMarks(list)">
+                  edit
+                </i>
+              </span>
+            </td>
+            <!-- <td>
+            <div class="row">
+              <div class="col-sm-6">
+                <button (click)="showQuestion1(list.submittedAnswer[0].question)" mat-raised-button>Q1</button>
+              </div>
+              <div class="col-sm-6">
+                <button (click)="showQuestion2(list.submittedAnswer[1].question)" mat-raised-button>Q2</button>
+              </div>
+            </div>
+          </td> -->
+            <!-- <td *ngFor="let item of list.submittedAnswer;let i=index">
+            <div>
+              Section {{item.section}}</div>
+              <a class="icon" (click)="downloadAnswer(item,list.studentName)">
+                <i class="material-icons">
+                  cloud_download
+                </i>
+              </a>
+            </td> -->
+
+            <!-- <td>{{list.createdAt| date}}</td> -->
+          </tr>
+
+          <!-- isChecked: false
+            name: "Ashish"
+            username: "ashishume" 
+            sheetNumber: 1
+            link:
+            "https://firebasestorage.googleapis.com/v0/b/reality-check-18196.appspot.com/o/null%2FAshish_1574669100626?alt=media&token=4a18c08b-880b-4870-9859-faccc55f06b0"
+            marksBand: 0
+            section: "Writing"
+            testNumber: 1
+          -->
+        </table>
+      </div>
+      <div style="text-align: center;" *ngIf="!studentDetails.length">
+        <br>
+        <p class="alert alert-danger"> No results found</p>
+      </div>
+    </div>
+  </div>
+</div>

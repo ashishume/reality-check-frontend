@@ -1,0 +1,9 @@
+.row {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.mat-raised-button{
+  width: 50%;
+}

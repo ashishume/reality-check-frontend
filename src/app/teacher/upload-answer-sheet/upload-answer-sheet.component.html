@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="inside-container">
+        <br>
+        <br>
+        <br>
+        <form class="form" [formGroup]="UploadForm" autocomplete="off" novalidate #UploadFormData="ngForm"
+          (ngSubmit)="onSubmitUploadForm(UploadFormData)">
+
+          <mat-form-field>
+            <mat-label>
+              Select Student
+            </mat-label>
+            <mat-select formControlName="username" disabled required name="username" [(ngModel)]="username">
+              <mat-option *ngFor="let user of userDetails" [value]="user.username">
+                {{user.name}} / {{user.username}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field>
+            <mat-label>
+              Test Number
+            </mat-label>
+            <mat-select formControlName="testNumber" disabled required name="testNumber" [(ngModel)]="testNumber">
+              <mat-option *ngFor="let item of countOfTests" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field> &nbsp;
+
+          <mat-form-field>
+            <mat-label>Sheet Number</mat-label>
+            <input matInput type="number" min="1" readonly formControlName="sheetNumber" required name="sheetNumber"
+              [(ngModel)]="sheetNumber">
+          </mat-form-field> &nbsp;
+          <mat-form-field appearance="outline">
+            <mat-label>Marks</mat-label>
+            <input matInput type="number" formControlName="marksBand" name="marksBand" [(ngModel)]="marksBand">
+          </mat-form-field>
+          <br>
+          <br>
+          <input formControlName="upload" required name="upload" type="file" accept="image/*"
+            (change)="onFileSelected($event)">
+
+          <span *ngIf="imageSource">
+            <img [src]="imageSource" style="height: 300px;width:200px">
+          </span>
+          <br>
+          <br>
+
+          <button mat-raised-button style="width: 50%" color="primary" [disabled]="!UploadForm.valid"
+            type="submit">Submit</button>
+
+          <button mat-raised-button style="width: 50%" [mat-dialog-close]=false type="submit">Cancel</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

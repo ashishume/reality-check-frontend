@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'over'"
+    [opened]="!(isHandset$ | async) ? 'false':'false' ">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+
+      <span class="profile">
+        <button mat-raised-button style="width: 100%" (click)="authService.SignOut()">Logout</button>
+      </span>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="mat-sidenav-content">
+    <span>
+
+      <mat-toolbar color="primary">
+
+        <span routerLink="/" style="cursor: pointer">Reality Check</span>
+        <span style="flex:1 1 auto;"></span>
+
+        <div class="buttons" *ngIf="username">
+          <span [matMenuTriggerFor]="menu" class="navigate"><img src="../../../../assets/logout.png"
+              class="icon"></span>
+          <mat-menu #menu="matMenu" > 
+            <span mat-menu-item (click)="authService.SignOut()">Logout</span>
+          </mat-menu>
+        </div>
+      </mat-toolbar>
+    </span>
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

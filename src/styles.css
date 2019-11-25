@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "@angular/material/prebuilt-themes/deeppurple-amber.css"; */
+@import url("https://fonts.googleapis.com/css?family=Quicksand:500&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap"); */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.material-icons{
+  cursor: pointer;
+}

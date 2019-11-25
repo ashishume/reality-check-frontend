@@ -1,0 +1,10 @@
+.mat-form-field{
+    width: 100%;
+}
+.mat-raised-button{
+    width: 100%;
+    color: white;
+    background-color: #5883D0;
+    /* padding: 10px; */
+    border-radius: 20px;
+}

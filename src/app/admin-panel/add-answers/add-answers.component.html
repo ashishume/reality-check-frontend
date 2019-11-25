@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+        <a routerLink="/admin-panel">Back</a>
+      <h2>Selet Test Number</h2>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Test Number" [(ngModel)]="testNumber">
+          <mat-option *ngFor="let list of countTest" [value]="list">{{list}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h2>Section</h2>&nbsp;
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="section" placeholder="Section">
+          <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <a routerLink="/admin-panel/view-answers">View Answers</a>
+    </div>
+    <div class="col-sm-6">
+      <h2>Enter Answers </h2>
+      <div class="answer">
+
+        <div *ngFor="let list of answerDetails">
+          <mat-form-field>
+            <mat-label>{{list.questionNumber}}</mat-label>
+            <input class="input-field" matInput [(ngModel)]="list.correctAnswer" />
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color="accent" (click)="onSubmitAnswerForm()">Submit <i class="material-icons">
+          play_arrow
+        </i></button>
+
+    </div>
+  </div>
+</div>

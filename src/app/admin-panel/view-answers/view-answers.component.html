@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-3">
+        <a routerLink="/admin-panel">Back</a>
+      <h4>Test Number</h4>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Test Number" [(ngModel)]="testNumber">
+          <mat-option *ngFor="let list of countTests" [value]="list">{{list}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h4>Section</h4>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Section" [(ngModel)]="section">
+          <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)='getAnswerDetails()'>Search</button>
+
+      <br>
+      <br>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <br>
+      <br>
+      <div class="danger">
+        <p class="danger-zone">Danger Zone</p>
+        <p>Delete Test </p>
+        <span>Test Number</span>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Test Number" [(ngModel)]="deleteTestNumber">
+            <mat-option *ngFor="let list of countTests" [value]="list">{{list}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <span>Section</span>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Section" [(ngModel)]="deleteSection">
+            <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button class="btn btn-danger" (click)='deleteTestDetails()'>Delete Test</button>
+      </div>
+
+
+    </div>
+
+    <div class="col-sm-9">
+      <span *ngIf="answersData.length">
+        <h3>Test {{testNumber}}, {{section}}</h3>
+        <table class="table table-bordered">
+          <tr>
+            <td>Question No.</td>
+            <td>Correct Answer</td>
+            <td>Edit</td>
+          </tr>
+          <tr *ngFor='let item of answersData'>
+            <td>{{item.questionNumber}}</td>
+            <td>{{item.correctAnswer}}</td>
+            <td><i (click)="onEditAnswer(item)" class="material-icons">
+                edit
+              </i></td>
+          </tr>
+        </table>
+      </span>
+      <span *ngIf="!answersData.length">
+        <p class="alert alert-danger" style="text-align: center;">No Answer found</p>
+      </span>
+
+    </div>
+
+  </div>
+</div>

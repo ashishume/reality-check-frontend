@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <a routerLink="/admin-panel">Back</a>
+            <h2>Issues</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Name</td>
+                        <td>Username</td>
+                        <td>Message</td>
+                        <td>Status</td>
+                        <td>Edit</td>
+                    </tr>
+                    <tr *ngFor="let issue of Issues">
+                        <td>{{issue.name}}</td>
+                        <td>{{issue.username}}</td>
+                        <td>{{issue.message}}</td>
+                        <td>
+                            <span *ngIf="!issue.isSolved">
+                                <img src="../../../assets/error.png">
+                                Not Solved
+                            </span>
+                            <span *ngIf="issue.isSolved">
+                                <img src="../../../assets/tick.png">
+                                Solved
+                            </span>
+                        </td>
+                        <td>
+                            <span *ngIf="!issue.isSolved">
+                                <button mat-raised-button (click)="issueResolved(issue)">Click to resolve issue</button>
+                            </span>
+                            <span *ngIf="issue.isSolved">
+                                <p>no action required</p>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

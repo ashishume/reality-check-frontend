@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a routerLink="/admin-panel">Back</a>
+      <h2>Links</h2>
+      <div class="table-responsive">
+
+        <table class="table table-bordered">
+          <tr>
+            <td>Test Number</td>
+            <td>Listening Link <br>(link 1=Audio and link 2=pdf)</td>
+            <td>Reading PDF Link</td>
+            <td>Writing PDF Link</td>
+          </tr>
+          <tr *ngFor="let item of testDetails">
+            <td>{{item.testNumber}} </td>
+            <td>{{item.listeningLink}} <i (click)="onListeningEdit('listeningLink',item)" class="material-icons">
+                edit
+              </i></td>
+            <td>{{item.readingLink}} <i (click)="onReadingEdit('readingLink',item)" class="material-icons">
+                edit
+              </i></td>
+            <td>{{item.documentWritingLink}} <i (click)="onWritingEdit('documentWritingLink',item)"
+                class="material-icons">
+                edit
+              </i></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<br>
+<br>
+<div class="container">
+
+
+  <div class="row">
+    <div class="col-sm-12" style="margin: 0 auto;">
+      <app-profile></app-profile>
+      <hr>
+    </div>
+    <div style="margin: 0 auto;" *ngIf="userType==='Student'">
+      <button mat-raised-button routerLink="/marks-sheet">Marks Sheet</button>
+    </div>
+    <div class="col-sm-12" style="text-align: center">
+      <div *ngIf="userType=='Student'">
+        <app-progress></app-progress>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div *ngIf="userType==='Student'">
+
+        <h4>Mock Tests</h4>
+        <div *ngFor="let tests of testDetails">
+          <mat-card>
+            <b>
+              Test {{tests.testNumber}}
+            </b>
+            <button class="btn btn-info" [routerLink]="['/section']" [queryParams]="{testNumber:tests.testNumber}">
+              Take Test
+              <img src="../../assets/forward.png"></button>
+
+          </mat-card>
+          <br>
+        </div>
+      </div>
+
+
+      <div class="user" *ngIf="userType==='Admin'">
+        <h2>Admin User</h2>
+        <a routerLink="/admin-panel">Go to Admin Panel</a>
+      </div>
+      <div class="user" *ngIf="userType==='Teacher'">
+        <h2>Teacher</h2>
+        <a routerLink="/teacher">Go to Teacher Panel</a>
+      </div>
+
+      <div class="icon" style="text-align: center;">
+        <i class="material-icons">
+          emoji_people
+        </i>
+        <a (click)="raiseIssue()">Raise an issue</a>
+      </div>
+      <br>
+      <br>
+      <br>
+
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a routerLink="/">Back</a>
+      <mat-tab-group class="mat-tab-groups" mat-align-tabs="center">
+        <mat-tab label="Scores">
+          <ng-template matTabContent>
+
+            <div>
+              <h3 class="heading">Your MarksSheet</h3>
+
+
+              <mat-form-field>
+                <mat-label>Select Test Number</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let item of countOfTests" [value]="item" (click)="showResult(item)">{{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+            </div>
+            <div class="table-responsive" *ngIf="marksDetails.length">
+              <table class="table table-bordered">
+                <tr class="table-primary">
+                  <td>Test Number</td>
+                  <td>Section</td>
+                  <td>Marks Scored</td>
+                </tr>
+                <tr class="items" *ngFor="let list of marksDetails">
+                  <td>
+                    {{list.testNumber}}
+                  </td>
+                  <td>
+                    {{list.section}}
+                  </td>
+                  <td>
+                    {{list.marksBand}}
+                  </td>
+
+                </tr>
+
+              </table>
+
+
+            </div>
+
+            <div style="text-align: center;" *ngIf="!marksDetails.length">
+              <p class="alert alert-danger">No results found</p>
+              <a routerLink="/">Go Back</a>
+            </div>
+
+
+          </ng-template>
+        </mat-tab>
+
+
+
+        <mat-tab label="Document Scores">
+          <ng-template matTabContent>
+            <h3>Your Uploaded answer sheet</h3>
+
+            <table class="table" *ngIf="UploadMarksDetails.length">
+              <tr>
+                <td>Test Number</td>
+                <td>Sheet Number</td>
+                <td>Marks Scored</td>
+                <td>Question Paper</td>
+                <td>Answer Image</td>
+                <td>Checked Status</td>
+              </tr>
+              <tr *ngFor="let list of UploadMarksDetails" style="text-align:center">
+                <td>{{list.testNumber}}</td>
+                <td>{{list.sheetNumber}}</td>
+                <td>{{list.marksBand}}</td>
+
+                <td> <a [href]="list.pdfUrl" target="_blank">Question</a>
+                </td>
+                <td>
+                  <img [src]="list.imageUrl" style="height: 200px;width:150px"><br>
+                  <a [href]="list.imageUrl" target="_blank">Download</a>
+                </td>
+                <td>
+                  <span *ngIf="list.isChecked">
+                    <img src="../../../assets/tick.png">
+                  </span>
+                  <span *ngIf="!list.isChecked">
+                    <img src="../../../assets/error.png">
+                  </span>
+                </td>
+              </tr>
+
+            </table>
+
+            <div style="text-align: center;" *ngIf="!UploadMarksDetails.length">
+              <br>
+              <p class="alert alert-danger"> No results found</p>
+            </div>
+
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+
+    </div>
+  </div>
+</div>

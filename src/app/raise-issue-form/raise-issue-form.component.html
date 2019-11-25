@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form class="form" autocomplete="off" #IssueForm="ngForm" (ngSubmit)="onSubmitIssue(IssueForm)">
+
+        <textarea class="message" placeholder="Please type your issue...." name="message"
+          [(ngModel)]="message"></textarea>
+        <br>
+        <br>
+        <button mat-raised-button style="width: 50%" color="primary">Submit</button>
+        <button mat-raised-button style="width: 50%" mat-dialog-close>Cancel</button>
+
+      </form>
+
+
+    </div>
+  </div>
+</div>

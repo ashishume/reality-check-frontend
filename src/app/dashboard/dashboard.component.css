@@ -1,0 +1,21 @@
+.mat-card {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.btn-info {
+  background-color: #5883d0;
+  float: right;
+  border-radius: 15px;
+  position: relative;
+  bottom: 7px;
+}
+.user {
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.icon{
+  cursor: pointer;
+}
