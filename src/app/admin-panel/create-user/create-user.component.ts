@@ -14,6 +14,10 @@ export class CreateUserComponent implements OnInit {
 
   userDetails = [];
   userTypes = [];
+  name;
+  username;
+  password;
+  userType;
   public CreateUserFormGroup: FormGroup;
   constructor(
     private apiService: ApiService,

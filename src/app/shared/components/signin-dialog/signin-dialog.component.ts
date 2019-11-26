@@ -9,6 +9,9 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class SigninDialogComponent implements OnInit {
   public LoginFormGroup: FormGroup;
+  username;
+  password;
+  
   constructor(
     private fb: FormBuilder,
     private matDialogRef: MatDialogRef<SigninDialogComponent>

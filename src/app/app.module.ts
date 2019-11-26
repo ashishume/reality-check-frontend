@@ -29,10 +29,7 @@ import { ErrorServiceService } from './shared/services/error-service/error-servi
 import { ResultsComponent } from './results/results.component';
 import { MarksSheetComponent } from './marks-sheet/marks-sheet.component';
 import { RaiseIssueFormComponent } from './raise-issue-form/raise-issue-form.component';
-import { InfoPageComponent } from './shared/components/info-page/info-page.component';
 import { ProgressComponent } from './progress/progress.component';
-import { SpeakingDialogComponent } from './shared/components/speaking-dialog/speaking-dialog.component';
-import { ShowWritingQuestionComponent } from './shared/components/show-writing-question/show-writing-question.component';
 import { SigninDialogComponent } from './shared/components/signin-dialog/signin-dialog.component';
 import { httpInterceptorProviders } from './shared/services/interceptor-service';
 import { AnswerHelperService } from './section/shared/answer-helper/answer-helper.service';
@@ -50,10 +47,7 @@ import { ProfileComponent } from './profile/profile.component';
     ResultsComponent,
     MarksSheetComponent,
     RaiseIssueFormComponent,
-    InfoPageComponent,
     ProgressComponent,
-    SpeakingDialogComponent,
-    ShowWritingQuestionComponent,
     SigninDialogComponent,
     ProfileComponent,
 
@@ -75,10 +69,7 @@ import { ProfileComponent } from './profile/profile.component';
 
   ],
   entryComponents: [
-    InfoPageComponent,
-    SpeakingDialogComponent,
     SnackBarComponent,
-    ShowWritingQuestionComponent,
     SigninDialogComponent,
     RaiseIssueFormComponent],
   providers: [

@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
     public matDialog: MatDialog,
   ) { }
 
-  username:string;
+  username: string;
   ngOnInit() {
     this.authService.username.subscribe((data: any) => {
       this.username = data;
@@ -39,12 +39,13 @@ export class SignInComponent implements OnInit {
   onSignInDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
-    dialogConfig.height = '400px';
+    dialogConfig.height = '450px';
     // dialogConfig.disableClose = true;
 
     const dialogRef = this.matDialog.open(SigninDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result: any) => {
-      this.authService.Authentication(result);
+      if (result)
+        this.authService.Authentication(result);
     })
   }
 

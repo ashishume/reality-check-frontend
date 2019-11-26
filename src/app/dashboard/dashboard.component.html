@@ -26,10 +26,11 @@
         <h4>Mock Tests</h4>
         <div *ngFor="let tests of testDetails">
           <mat-card>
+            <img src="../../assets/writing.png" class="writing-icon">
             <b>
               Test {{tests.testNumber}}
             </b>
-            <button class="btn btn-info" [routerLink]="['/section']" [queryParams]="{testNumber:tests.testNumber}">
+            <button mat-raised-button [routerLink]="['/section']" [queryParams]="{testNumber:tests.testNumber}">
               Take Test
               <img src="../../assets/forward.png"></button>
 

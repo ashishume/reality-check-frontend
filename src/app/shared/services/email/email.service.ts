@@ -3,7 +3,6 @@ import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Injectable } from '@angular/core';
 import { ErrorServiceService } from '../error-service/error-service.service';
 import { Router } from '@angular/router';
-import { SpeakingDialogComponent } from '../../components/speaking-dialog/speaking-dialog.component';
 
 @Injectable({
   providedIn: 'root'
