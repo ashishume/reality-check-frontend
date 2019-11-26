@@ -50,7 +50,6 @@ export class ListeningComponent implements OnInit {
       data.body.testDetails.forEach(res => {
         if (this.testNumber == res.testNumber) {
           let array = res.listeningLink.split(" ")
-          console.log(array);
           this.audioLink = array[0]
           this.pdfLink = array[1]
         }
@@ -65,15 +64,19 @@ export class ListeningComponent implements OnInit {
       var value = result.QValue.toUpperCase().trim();
       tempArray.push({ questionNumber: result.QNumber, correctAnswer: value })
     })
+    // console.log(tempArray);
+
 
     const body = {
       answers: tempArray,
       section: this.section,
       testNumber: parseInt(this.testNumber)
     }
+    // console.log(body);
+    
     this.calculate.checkMarks(body).subscribe(data => {
+console.log(data);
 
-      if (data) {
         this.score = data;
         this.onSubmitMarks()
         this.checkMarksStatus.subscribe(res => {
@@ -89,7 +92,6 @@ export class ListeningComponent implements OnInit {
             })
           }
         });
-      }
     })
   }
 

@@ -58,7 +58,6 @@ export class UploadAnswerSheetComponent implements OnInit {
     this.helper.getUsers()
     this.helper.getUserDetails.subscribe(data => {
       this.userDetails = data;
-
     })
 
   }

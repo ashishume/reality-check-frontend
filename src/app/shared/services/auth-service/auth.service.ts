@@ -20,6 +20,9 @@ export class AuthService {
     private apiService: ApiService,
     private snack: ErrorServiceService
   ) {
+    if (!this.userType) {
+      this.userType = localStorage.getItem('userType');
+    }
   }
 
   activateGuard() {

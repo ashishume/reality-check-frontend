@@ -3,12 +3,22 @@
     <div class="col-sm-12">
 
       <mat-tab-group class="mat-tab-groups" mat-align-tabs="center">
-        <mat-tab class="mat-tab" label="Computer Writing Answers">
+        <mat-tab class="mat-tab" label="Writing Answers">
           <ng-template matTabContent>
             <app-show-writing></app-show-writing>
           </ng-template>
         </mat-tab>
-      
+        <!-- <mat-tab class="mat-tab" label="Upload Document">
+          <ng-template matTabContent>
+            <app-upload-answer-sheet></app-upload-answer-sheet>
+          </ng-template>
+        </mat-tab> -->
+        <mat-tab class="mat-tab" label="Upload Marks">
+          <ng-template matTabContent>
+            <app-update-marks></app-update-marks>
+          </ng-template>
+        </mat-tab>
+
 
       </mat-tab-group>
 

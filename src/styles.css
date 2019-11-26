@@ -1,20 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-/* @import "@angular/material/prebuilt-themes/deeppurple-amber.css"; */
-@import url("https://fonts.googleapis.com/css?family=Quicksand:500&display=swap");
-/* @import url("https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap"); */
+@import url("https://fonts.googleapis.com/css?family=Kodchasan&display=swap");
 * {
   box-sizing: border-box;
+  font-family: "Kodchasan", sans-serif;
 }
 html,
 body {
   height: 100%;
   overflow: hidden;
 }
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Kodchasan", sans-serif;
   overflow-x: hidden;
 }
 
@@ -39,6 +39,6 @@ body {
   background: #555;
 }
 
-.material-icons{
+.material-icons {
   cursor: pointer;
 }

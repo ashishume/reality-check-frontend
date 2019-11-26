@@ -37,7 +37,6 @@ export class ShowWritingComponent implements OnInit {
     this.matDialog.open(UploadAnswerSheetComponent, matDialogConfig).afterClosed().subscribe(res => {
       if (res) {
         this.updateStudentTestData(res)
-        this.enterStudentMarks(list, res)
       }
     })
   }
@@ -48,14 +47,5 @@ export class ShowWritingComponent implements OnInit {
         this.ngOnInit()
     })
   }
-  enterStudentMarks(data, res) {
-    const body = {
-      username: data.username,
-      testNumber: data.testNumber,
-      section: data.section,
-      marksBand: res.marksBand,
-    }
-    console.log(body);
-    this.apiService.insertMarks(body).subscribe()
-  }
+
 }

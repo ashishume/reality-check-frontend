@@ -71,7 +71,6 @@ export class ReadingComponent implements OnInit {
     }
     this.calculate.checkMarks(body).subscribe(data => {
 
-      if (data) {
         this.score = data;
         this.onSubmitMarks()
         this.checkMarksStatus.subscribe(res => {
@@ -87,7 +86,6 @@ export class ReadingComponent implements OnInit {
             })
           }
         });
-      }
     })
   }
 

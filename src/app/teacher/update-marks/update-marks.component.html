@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="inside-container">
+                <br>
+                <br>
+
+                <br>
+                <form class="form" [formGroup]="UploadForm" autocomplete="off" novalidate #UploadFormData="ngForm"
+                    (ngSubmit)="onSubmitStudentMarks(UploadFormData)">
+
+                    <mat-form-field>
+                        <mat-label>
+                            Select Student
+                        </mat-label>
+                        <mat-select formControlName="username" required name="username" [(ngModel)]="username">
+                            <mat-option *ngFor="let user of userDetails" [value]="user.username">
+                                {{user.name}} / {{user.username}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp;
+                    <mat-form-field>
+                        <mat-label>
+                            Test Number
+                        </mat-label>
+                        <mat-select formControlName="testNumber" required name="testNumber" [(ngModel)]="testNumber">
+                            <mat-option *ngFor="let item of countOfTests" [value]="item">{{item}}</mat-option>
+                        </mat-select>
+                    </mat-form-field> &nbsp;
+
+                    <mat-form-field>
+                        <mat-label>Marks</mat-label>
+                        <input matInput type="number" formControlName="marksBand" name="marksBand"
+                            [(ngModel)]="marksBand">
+                    </mat-form-field>
+                    &nbsp;
+                    <mat-form-field>
+                        <mat-label>
+                            Section
+                        </mat-label>
+                        <mat-select formControlName="section" required name="section" [(ngModel)]="section">
+                            <mat-option *ngFor="let item of sections" [value]="item">
+                                <span *ngIf="item!=='Reading' || item!=='Listening'">
+                                    {{item}}
+                                </span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> &nbsp;
+                    <br>
+
+                    <button mat-raised-button color="primary" [disabled]="!UploadForm.valid"
+                        type="submit">Submit</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
