@@ -23,11 +23,8 @@ export class IssuesComponent implements OnInit {
     const body = {
       id: issue._id
     }
-    console.log(body);
 
     this.apiService.updateRaisedIssues(body).subscribe(data => {
-      console.log(data);
-
       if (data.status == 200)
         this.ngOnInit()
     })

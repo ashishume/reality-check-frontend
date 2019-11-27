@@ -18,6 +18,7 @@ export class UpdateMarksComponent implements OnInit {
   username;
   testNumber;
   sheetNumber;
+  section;
   marksBand;
   questionUrl;
   constructor(

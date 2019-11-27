@@ -68,8 +68,7 @@ export class ViewAnswersComponent implements OnInit {
         testNumber: this.testNumber
       }
       this.apiService.deleteAnswers(query).subscribe(data => {
-        console.log(data);
-
+        this.getAnswerDetails()
       })
     }
   }

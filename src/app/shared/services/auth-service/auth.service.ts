@@ -30,7 +30,6 @@ export class AuthService {
   }
 
   Authentication(data) {
-    console.log(data);
     this.apiService.login(data).subscribe((data) => {
       if (data.status == 200) {
         this.userData = data.body.userDetails.username;
@@ -57,13 +56,11 @@ export class AuthService {
     }
   }
   get isAdmin() {
-    console.log("Admin", this.userType);
     if (this.userType === "Admin") {
       return 'Admin'
     }
   }
   get isTeacher() {
-    console.log("Teach", this.userType);
     if (this.userType === "Teacher") {
       return 'Teacher';
     }

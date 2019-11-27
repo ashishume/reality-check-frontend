@@ -14,7 +14,6 @@ export class UpdateAnswersComponent implements OnInit {
     private apiService: ApiService,
     private dialogRef: MatDialogRef<UpdateAnswersComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-    console.log(data);
 
     if (data) {
       this.testNumber = data.testNumber;
@@ -46,7 +45,6 @@ export class UpdateAnswersComponent implements OnInit {
       "testNumber": this.testNumber,
       "updatedAnswer": answer
     }
-    console.log(body);
     this.apiService.updateTestAnswers(body).subscribe(data => {
       if (data.status == 200) {
         this.dialogRef.close(true)

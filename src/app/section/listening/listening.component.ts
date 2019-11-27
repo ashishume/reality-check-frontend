@@ -64,19 +64,14 @@ export class ListeningComponent implements OnInit {
       var value = result.QValue.toUpperCase().trim();
       tempArray.push({ questionNumber: result.QNumber, correctAnswer: value })
     })
-    // console.log(tempArray);
-
 
     const body = {
       answers: tempArray,
       section: this.section,
       testNumber: parseInt(this.testNumber)
     }
-    // console.log(body);
     
     this.calculate.checkMarks(body).subscribe(data => {
-console.log(data);
-
         this.score = data;
         this.onSubmitMarks()
         this.checkMarksStatus.subscribe(res => {

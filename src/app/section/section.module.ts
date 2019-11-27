@@ -8,8 +8,6 @@ import { CommonModule } from '@angular/common';
 import { ReadingComponent } from './reading/reading.component';
 import { SharedModule } from '../shared/services/shared.module';
 import { SectionRoutingModule } from './section-routing.module';
-import { CountdownModule } from 'ngx-countdown';
-import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 
 
@@ -21,11 +19,9 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
     SectionComponent,
   ],
   imports: [
-    AmazingTimePickerModule,
     CommonModule,
     SharedModule,
     SectionRoutingModule,
-    CountdownModule
   ],
   exports: [
     ReadingComponent,

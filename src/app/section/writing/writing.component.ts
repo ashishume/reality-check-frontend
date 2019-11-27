@@ -20,19 +20,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./writing.component.css']
 })
 export class WritingComponent implements OnInit {
-  // constructor(
-  //   private helper: AnswerHelperService
-  // ) { }
-
-  // answerDetails = []
-  // ngOnInit() {
-  //   const ans = this.helper.getQuestionData()
-  //   this.answerDetails = ans
-
-  // }
-  // onSubmitAnswerForm() {
-  //   console.log(this.answerDetails);
-  // }
+ 
 
 
   public WritingSection: FormGroup;

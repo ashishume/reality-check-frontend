@@ -1,9 +1,6 @@
 import { AnswerHelperService } from 'src/app/section/shared/answer-helper/answer-helper.service';
 import { ApiService } from './../shared/services/api-service/api.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import * as Chart from 'chart.js';
 import { Title } from '@angular/platform-browser';
 
 
@@ -37,7 +34,7 @@ export class MarksSheetComponent implements OnInit {
   ngOnInit() {
     this.query = {
       username: localStorage.getItem('username')
-    }   
+    }
     // this.imageUrl = localStorage.getItem('photoURL')
     // this.name = localStorage.getItem('name')
     // this.email = localStorage.getItem('email')
@@ -81,58 +78,11 @@ export class MarksSheetComponent implements OnInit {
         result.imageUrl = arrayUrl[0];
         result.pdfUrl = arrayUrl[1];
       })
-      console.log(this.UploadMarksDetails);
 
     })
 
 
   }
-  // showDocumentResult() {
 
-  //   var testNumber = this.testNumber;
-  //   let tempUploadArray = []
-  //   this.apiService.displayOnlineTestDetails().subscribe((data: any) => {
-  //     if (data.status == 200) {
-  //       data.body.forEach(element => {
-  //         if (element.studentEmail == localStorage.getItem('email') && element.testNumber == testNumber) {
-  //           tempUploadArray.push(element)
-  //         }
-  //       });
-  //       this.UploadMarksDetails = tempUploadArray;
-  //     }
-  //   })
-  // }
-
-  // showTestResult() {
-  //   var testNumber = this.testNumber;
-
-  //   let tempArray = []
-  //   this.apiService.displayMarksSheet(this.params).subscribe((data: any) => {
-  //     if (data.status == 200) {
-  //       this.showOverallBand(testNumber)
-  //       data.body.forEach(function (value) {
-  //         if (value.testNumber == testNumber) {
-  //           tempArray.push(value)
-  //         }
-  //       })
-  //       this.marksDetails = tempArray;
-
-  //     }
-  //   })
-  // }
-
-  // showOverallBand(testNumber) {
-  //   var averageScore;
-  //   this.apiService.getAnalysisData(this.params).subscribe(data => {
-  //     data.body.forEach(element => {
-  //       if (element.testNumber == testNumber) {
-  //         averageScore = element.average;
-  //       }
-  //     });
-
-  //     this.averageScore = averageScore;
-
-  //   })
-  // }
 
 }

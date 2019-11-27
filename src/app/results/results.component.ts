@@ -43,8 +43,6 @@ export class ResultsComponent implements OnInit {
 
       if (data.status == 200) {
         this.viewAnswerDetails = data.body[0].answers;
-        console.log(this.viewAnswerDetails);
-
       }
     })
   }

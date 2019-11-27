@@ -3,7 +3,6 @@ import { AdminPanelComponent } from './admin-panel.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/services/shared.module';
-import { CountdownModule } from 'ngx-countdown';
 import { AddAnswersComponent } from './add-answers/add-answers.component';
 import { UpdateAnswersComponent } from './update-answers/update-answers.component';
 import { AddLinksComponent } from './add-links/add-links.component';
@@ -26,7 +25,6 @@ import { IssuesComponent } from './issues/issues.component';
     IssuesComponent
   ],
   imports: [
-    CountdownModule,
     CommonModule,
     SharedModule,
     AdminPanelRoutingModule

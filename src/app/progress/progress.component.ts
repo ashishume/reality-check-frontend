@@ -31,8 +31,6 @@ export class ProgressComponent implements OnInit {
       username: localStorage.getItem('username')
     }
     this.apiService.getAnalysisData(query).subscribe(data => {
-      console.log(data);
-      
       if (data.status == 200) {
         this.lengthOfArray = data.body.length;
         data.body.forEach(element => {

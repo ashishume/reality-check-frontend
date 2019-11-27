@@ -67,7 +67,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmitLoginForm(form) {
-    console.log(form.value);
     this.apiService.createUser(form.value).subscribe(data => {
       if (data.status == 200) {
         this.ngOnInit()
