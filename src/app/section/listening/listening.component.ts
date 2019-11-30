@@ -29,6 +29,7 @@ export class ListeningComponent implements OnInit {
   answerDetails = []
   score;
   audioLink;
+  userType = localStorage.getItem('userType')
   checkMarksStatus = new Rx.Subject();
   pdfLink;
   ngOnInit() {
@@ -45,9 +46,11 @@ export class ListeningComponent implements OnInit {
   }
 
   getUrls() {
-
-    this.apiService.getTestDetails().subscribe(data => {
-      data.body.testDetails.forEach(res => {
+    const query = {
+      studentType: this.userType
+    }
+    this.apiService.getTestDetails(query).subscribe(data => {
+      data.body[0].testDetails.forEach(res => {
         if (this.testNumber == res.testNumber) {
           let array = res.listeningLink.split(" ")
           this.audioLink = array[0]
@@ -68,25 +71,26 @@ export class ListeningComponent implements OnInit {
     const body = {
       answers: tempArray,
       section: this.section,
-      testNumber: parseInt(this.testNumber)
+      testNumber: parseInt(this.testNumber),
+      studentType: this.userType
     }
-    
+
     this.calculate.checkMarks(body).subscribe(data => {
-        this.score = data;
-        this.onSubmitMarks()
-        this.checkMarksStatus.subscribe(res => {
-          if (res == true) {
-            this.route.navigate(['results'], {
-              queryParams:
-              {
-                testCompleteStatus: 'completed',
-                score: this.score,
-                section: this.section,
-                testNumber: this.testNumber
-              }
-            })
-          }
-        });
+      this.score = data;
+      this.onSubmitMarks()
+      this.checkMarksStatus.subscribe(res => {
+        if (res == true) {
+          this.route.navigate(['results'], {
+            queryParams:
+            {
+              testCompleteStatus: 'completed',
+              score: this.score,
+              section: this.section,
+              testNumber: this.testNumber
+            }
+          })
+        }
+      });
     })
   }
 

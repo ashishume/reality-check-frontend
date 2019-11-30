@@ -21,9 +21,13 @@ export class ViewAnswersComponent implements OnInit {
   answersData = []
   sectionData = []
   deleteSection;
+  deleteStudentType;
   deleteTestNumber;
-  section = "Reading"
+  section = "Reading";
+  changeType = "General Student";
+  studentType = [];
   ngOnInit() {
+    this.studentType = this.helper.getStudentTypes();
     this.countTests = this.helper.getTestNumber();
     this.sectionData = this.helper.getSectionDetails();
   }
@@ -31,9 +35,14 @@ export class ViewAnswersComponent implements OnInit {
   getAnswerDetails() {
     const query = {
       testNumber: this.testNumber,
-      section: this.section
+      section: this.section,
+      studentType: this.changeType
     }
+    console.log(query);
+
     this.apiService.getAnswers(query).subscribe(data => {
+      console.log(data);
+
       if (data.status == 200) {
         this.answersData = data.body[0].answers;
       }
@@ -47,9 +56,11 @@ export class ViewAnswersComponent implements OnInit {
     const body = {
       testNumber: this.testNumber,
       section: this.section,
+      studentType: this.changeType,
       correctAnswer: data.correctAnswer,
       questionNumber: data.questionNumber
     }
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = body;
 
@@ -62,13 +73,15 @@ export class ViewAnswersComponent implements OnInit {
   }
 
   deleteTestDetails() {
-    if (this.deleteSection && this.deleteTestNumber) {
+    if (this.deleteSection && this.deleteTestNumber && this.deleteStudentType) {
       const query = {
         section: this.deleteSection,
-        testNumber: this.testNumber
+        testNumber: this.testNumber,
+        studentType: this.deleteStudentType
       }
       this.apiService.deleteAnswers(query).subscribe(data => {
-        this.getAnswerDetails()
+        if (data.status == 200)
+          this.getAnswerDetails()
       })
     }
   }

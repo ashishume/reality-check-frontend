@@ -1,17 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
-        <a routerLink="/admin-panel">Back</a>
-      <h2>Selet Test Number</h2>
+      <a routerLink="/admin-panel">Back</a>
+      <h2>Select Test Number</h2>
       <mat-form-field appearance="outline">
         <mat-select placeholder="Test Number" [(ngModel)]="testNumber">
           <mat-option *ngFor="let list of countTest" [value]="list">{{list}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <h2>Section</h2>&nbsp;
+      <h2>Select Section</h2>&nbsp;
       <mat-form-field appearance="outline">
         <mat-select [(ngModel)]="section" placeholder="Section">
           <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h2>Select Student Type</h2>
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="changeType" placeholder="Student Type">
+          <mat-option *ngFor="let list of studentType" [value]="list">{{list}}
           </mat-option>
         </mat-select>
       </mat-form-field>

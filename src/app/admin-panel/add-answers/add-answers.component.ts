@@ -22,8 +22,12 @@ export class AddAnswersComponent implements OnInit {
   countTest = []
   testNumber;
   section;
+  changeType;
+  studentType = []
+
   ngOnInit() {
     const ans = this.helper.getQuestionAnswerData()
+    this.studentType = this.helper.getStudentTypes();
     this.answerDetails = ans
 
     this.sectionData = this.helper.getSectionDetails()
@@ -40,7 +44,8 @@ export class AddAnswersComponent implements OnInit {
     const body = {
       answers: tempArray,
       section: this.section,
-      testNumber: this.testNumber
+      testNumber: this.testNumber,
+      studentType: this.changeType
     }
 
     this.apiService.insertTestAnswers(body).subscribe((res: any) => {

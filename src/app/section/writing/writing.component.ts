@@ -20,12 +20,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./writing.component.css']
 })
 export class WritingComponent implements OnInit {
- 
+
 
 
   public WritingSection: FormGroup;
   imageSource;
   actualDataSize;
+  userType = localStorage.getItem('userType')
   selectedImage;
   imageUrl;
   section: string;
@@ -67,7 +68,10 @@ export class WritingComponent implements OnInit {
       this.section = params['section'];
     });
 
-    this.apiService.getTestDetails().subscribe(data => {
+    const query = {
+      studentType: this.userType
+    }
+    this.apiService.getTestDetails(query).subscribe(data => {
       data.body.testDetails.forEach(res => {
         if (this.testNumber == res.testNumber) {
           this.pdfLink = res.readingLink

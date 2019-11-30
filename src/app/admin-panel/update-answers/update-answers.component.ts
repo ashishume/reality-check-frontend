@@ -20,6 +20,7 @@ export class UpdateAnswersComponent implements OnInit {
       this.section = data.section;
       this.updatedAnswer = data.correctAnswer;
       this.questionNumber = data.questionNumber;
+      this.studentType = data.studentType
     }
 
   }
@@ -27,6 +28,7 @@ export class UpdateAnswersComponent implements OnInit {
   questionData = []
   sectionData = []
   updatedAnswer;
+  studentType;
   testNumber;
   questionNumber;
   section;
@@ -43,7 +45,8 @@ export class UpdateAnswersComponent implements OnInit {
       "questionNumber": this.questionNumber,
       "section": this.section,
       "testNumber": this.testNumber,
-      "updatedAnswer": answer
+      "updatedAnswer": answer,
+      "studentType": this.studentType
     }
     this.apiService.updateTestAnswers(body).subscribe(data => {
       if (data.status == 200) {

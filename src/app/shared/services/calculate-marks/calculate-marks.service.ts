@@ -27,7 +27,8 @@ export class CalculateMarksService {
 
       const query = {
         testNumber: body.testNumber,
-        section: body.section
+        section: body.section,
+        studentType: body.studentType
       }
       this.apiService.getAnswers(query).subscribe(data => {
         rightAnswer = data.body[0].answers;

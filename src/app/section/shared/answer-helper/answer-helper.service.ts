@@ -63,9 +63,17 @@ export class AnswerHelperService {
 
   getUserTypes() {
     return [
-      "Student",
+      "General Student",
+      "Academic Student",
       "Admin",
       "Teacher",
+    ]
+  }
+
+  getStudentTypes() {
+    return [
+      "Academic Student",
+      "General Student"
     ]
   }
 }

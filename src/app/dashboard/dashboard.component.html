@@ -8,11 +8,11 @@
       <app-profile></app-profile>
       <hr>
     </div>
-    <div style="margin: 0 auto;" *ngIf="userType==='Student'">
+    <div style="margin: 0 auto;" *ngIf="userType==='Academic Student' || userType==='General Student'">
       <button mat-raised-button routerLink="/marks-sheet">Marks Sheet</button>
     </div>
     <div class="col-sm-12" style="text-align: center">
-      <div *ngIf="userType=='Student'">
+      <div *ngIf="userType==='Academic Student' || userType==='General Student'">
         <app-progress></app-progress>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <div *ngIf="userType==='Student'">
+      <div *ngIf="userType==='Academic Student' || userType==='General Student'">
 
         <h4>Mock Tests</h4>
         <div *ngFor="let tests of testDetails">

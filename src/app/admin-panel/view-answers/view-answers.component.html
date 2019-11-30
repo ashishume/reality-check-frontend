@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-sm-3">
-        <a routerLink="/admin-panel">Back</a>
+      <a routerLink="/admin-panel">Back</a>
       <h4>Test Number</h4>
       <mat-form-field appearance="outline">
         <mat-select placeholder="Test Number" [(ngModel)]="testNumber">
@@ -13,6 +13,12 @@
       <mat-form-field appearance="outline">
         <mat-select placeholder="Section" [(ngModel)]="section">
           <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h4>Student Type</h4>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Student Type" [(ngModel)]="changeType">
+          <mat-option *ngFor="let list of studentType" [value]="list">{{list}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -41,6 +47,12 @@
           <mat-select placeholder="Section" [(ngModel)]="deleteSection">
             <mat-option *ngFor="let list of sectionData" [value]="list">{{list}}
             </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <h4>Student Type</h4>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Student Type" [(ngModel)]="deleteStudentType">
+            <mat-option *ngFor="let list of studentType" [value]="list">{{list}}</mat-option>
           </mat-select>
         </mat-form-field>
         <button class="btn btn-danger" (click)='deleteTestDetails()'>Delete Test</button>

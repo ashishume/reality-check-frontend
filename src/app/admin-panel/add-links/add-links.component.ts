@@ -21,12 +21,23 @@ export class AddLinksComponent implements OnInit {
   testDetails = []
   testNumber;
   testName;
+  studentTypes = [];
+  changeType = "General Student"
   ngOnInit() {
-    // this.linkNames = this.helper.getLinkSectionDetails()
-    // this.testCount = this.helper.getTestNumber()
+    this.studentTypes = this.helper.getStudentTypes()
+    this.getLinksData()
+  }
 
-    this.apiService.getSectionLink().subscribe(data => {
-      this.testDetails = data.body.testDetails;
+
+  getLinksData() {
+    const query = {
+      studentType: this.changeType
+    }
+    console.log(query);
+
+    this.apiService.getSectionLink(query).subscribe(data => {
+      this.testDetails = data.body[0].testDetails;
+      console.log(this.testDetails);
 
     })
   }
@@ -41,9 +52,10 @@ export class AddLinksComponent implements OnInit {
     const dialogRef = this.matDialog.open(UpdateLinksComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result !== false && result != "") {
+        result.studentType=this.changeType
         this.apiService.updateTestLinks(result).subscribe(data => {
           if (data.status == 200) {
-            this.ngOnInit()
+            this.getLinksData()
           }
         })
       }
@@ -51,6 +63,11 @@ export class AddLinksComponent implements OnInit {
     })
 
   }
+  changeStudentType(type) {
+    this.changeType = type;
+    this.getLinksData()
+  }
+
   onWritingEdit(testName, items) {
     const body = {
       testName: testName,

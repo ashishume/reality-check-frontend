@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
+import { log } from 'util';
 
 
 @Component({
@@ -26,9 +27,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.userType = localStorage.getItem('userType')
+    if (this.userType == 'Academic Student' || this.userType == 'General Student') {
+      this.getTestDetails()
+    }
 
-    this.apiService.getTestDetails().subscribe((data: any) => {
-      this.testDetails = data.body.testDetails;
+
+  }
+
+  getTestDetails() {
+    const query = {
+      studentType: this.userType
+    }
+    this.apiService.getTestDetails(query).subscribe((data: any) => {
+      this.testDetails = data.body[0].testDetails;
     })
   }
   raiseIssue() {

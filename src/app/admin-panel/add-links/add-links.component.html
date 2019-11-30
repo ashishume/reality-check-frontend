@@ -3,6 +3,13 @@
     <div class="col-sm-12">
       <a routerLink="/admin-panel">Back</a>
       <h2>Links</h2>
+      <mat-form-field style="max-width: 200px;">
+        <mat-label>Student Type</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let type of studentTypes" [value]="type" (click)="changeStudentType(type)">{{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <div class="table-responsive">
 
         <table class="table table-bordered">

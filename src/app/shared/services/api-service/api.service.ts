@@ -33,8 +33,8 @@ export class ApiService {
   }
   //*************USER APIs */
 
-  getTestDetails() {
-    return this.httpService.callApi('GET', '', 'tests', '');
+  getTestDetails(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'tests', query);
   }
   insertTestAnswers(body) {
     return this.httpService.callApi('POST', body, 'answers', '');
@@ -56,8 +56,8 @@ export class ApiService {
   insertTestLinks(body) {
     return this.httpService.callApi('POST', body, 'tests', '');
   }
-  getSectionLink() {
-    return this.httpService.callApi('GET', '', 'tests', '');
+  getSectionLink(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'tests', query);
   }
 
   //Writing
