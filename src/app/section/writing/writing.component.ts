@@ -54,12 +54,7 @@ export class WritingComponent implements OnInit {
         sheetNumber: new FormControl('', [Validators.required]),
       },
     );
-    // this.apiService.checkTestStatus().subscribe((data: any) => {
-    //   if (data.onlineWriting == true || data.writing == true) {
-    //     this.route.navigate(['dashboard'])
-    //     this.snackbar.showError("You have already given the test")
-    //   }
-    // })
+
 
   }
   ngOnInit() {
@@ -72,7 +67,7 @@ export class WritingComponent implements OnInit {
       studentType: this.userType
     }
     this.apiService.getTestDetails(query).subscribe(data => {
-      data.body.testDetails.forEach(res => {
+      data.body[0].testDetails.forEach(res => {
         if (this.testNumber == res.testNumber) {
           this.pdfLink = res.readingLink
         }
@@ -133,14 +128,5 @@ export class WritingComponent implements OnInit {
   onSubmitUploadForm1(UploadFormData) {
     this.uploadImage(UploadFormData.value.sheetNumber) //to be done
   }
-
-
-  // testCompleted() {
-  //   this.apiService.updateTestStatus("onlineWriting")
-  //   this.route.navigate(['dashboard'])
-  // }
-
-
-
 
 }

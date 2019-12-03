@@ -35,18 +35,7 @@ export class MarksSheetComponent implements OnInit {
     this.query = {
       username: localStorage.getItem('username')
     }
-    // this.imageUrl = localStorage.getItem('photoURL')
-    // this.name = localStorage.getItem('name')
-    // this.email = localStorage.getItem('email')
-    // this.studentType = localStorage.getItem('userType')
 
-    // this.params = {
-    //   email: localStorage.getItem('email')
-    // }
-    // if (localStorage.getItem('userType') == "Academic Students")
-    //   this.studentType = "Academic Student";
-    // if (localStorage.getItem('userType') == "General Students")
-    //   this.studentType = "General Student";
     this.showDocumentScores()
     this.countOfTests = this.helper.getTestNumber()
   }

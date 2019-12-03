@@ -37,7 +37,8 @@ export class ResultsComponent implements OnInit {
     this.displayAnswer = true;
     const params = {
       section: this.section,
-      testNumber: this.testNumber
+      testNumber: this.testNumber,
+      studentType: localStorage.getItem('userType')
     }
     this.apiService.getAnswers(params).subscribe(data => {
 

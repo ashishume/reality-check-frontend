@@ -29,7 +29,7 @@ export class ListeningComponent implements OnInit {
   answerDetails = []
   score;
   audioLink;
-  userType = localStorage.getItem('userType')
+  userType = "Academic Student"
   checkMarksStatus = new Rx.Subject();
   pdfLink;
   ngOnInit() {
