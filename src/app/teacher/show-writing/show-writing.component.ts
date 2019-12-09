@@ -12,7 +12,9 @@ export class ShowWritingComponent implements OnInit {
 
   constructor
     (private apiService: ApiService,
-      public matDialog: MatDialog) { }
+      public matDialog: MatDialog,
+  ) {
+  }
   studentDetails: any = [];
   imageUrl;
   pdfUrl;

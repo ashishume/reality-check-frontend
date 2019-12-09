@@ -1,10 +1,7 @@
 import { CalculateMarksService } from 'src/app/shared/services/calculate-marks/calculate-marks.service';
 import { ApiService } from '../../shared/services/api-service/api.service';
-import { Component, OnInit, ViewChild, ElementRef, HostListener, Injectable, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { NavbarService } from 'src/app/shared/services/navbar-service/navbar.service';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ErrorServiceService } from 'src/app/shared/services/error-service/error-service.service';
 import { Title } from '@angular/platform-browser';
 import { AnswerHelperService } from '../shared/answer-helper/answer-helper.service';
 import * as Rx from 'rxjs';
@@ -22,8 +19,11 @@ export class ListeningComponent implements OnInit {
     private calculate: CalculateMarksService,
     private router: ActivatedRoute,
     private route: Router,
-    private apiService: ApiService
-  ) { }
+    private apiService: ApiService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Listening')
+  }
   section;
   testNumber;
   answerDetails = []
@@ -55,6 +55,7 @@ export class ListeningComponent implements OnInit {
           let array = res.listeningLink.split(" ")
           this.audioLink = array[0]
           this.pdfLink = array[1]
+
         }
 
       })
@@ -64,7 +65,7 @@ export class ListeningComponent implements OnInit {
 
     let tempArray = []
     this.answerDetails.forEach(result => {
-      var value = result.QValue.toUpperCase().trim();
+      var value = result.QValue.toUpperCase().trim().replace(/\s+/g, " ");
       tempArray.push({ questionNumber: result.QNumber, correctAnswer: value })
     })
 

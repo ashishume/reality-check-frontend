@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { AnswerHelperService } from './../../section/shared/answer-helper/answer-helper.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-update-user',
@@ -19,8 +20,10 @@ export class UpdateUserComponent implements OnInit {
     private fb: FormBuilder,
     private helper: AnswerHelperService,
     @Inject(MAT_DIALOG_DATA) data,
-    private matDialogRef: MatDialogRef<UpdateUserComponent>
+    private matDialogRef: MatDialogRef<UpdateUserComponent>,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Update User')
 
     if (data) {
       this.name = data.name;

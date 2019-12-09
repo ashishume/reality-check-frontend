@@ -1,5 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-update-links',
@@ -10,7 +11,12 @@ export class UpdateLinksComponent implements OnInit {
   testName;
   testNumber;
   link;
-  constructor(@Inject(MAT_DIALOG_DATA) data, private MatDialogRef: MatDialogRef<UpdateLinksComponent>) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data,
+    private MatDialogRef: MatDialogRef<UpdateLinksComponent>,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Update Links')
     if (data) {
       this.testName = data.testName;
       this.testNumber = data.testNumber;

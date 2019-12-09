@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { SnackBarComponent } from './../../shared/components/snack-bar/snack-bar.component';
 import { Component, OnInit } from '@angular/core';
 import { AnswerHelperService } from 'src/app/section/shared/answer-helper/answer-helper.service';
@@ -14,8 +16,12 @@ export class AddAnswersComponent implements OnInit {
   constructor(
     private helper: AnswerHelperService,
     private apiService: ApiService,
-    private snack: MatSnackBar
-  ) { }
+    private snack: MatSnackBar,
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Add Answers')
+  }
 
   sectionData = []
   answerDetails = []
@@ -37,7 +43,7 @@ export class AddAnswersComponent implements OnInit {
   onSubmitAnswerForm() {
     let tempArray = []
     this.answerDetails.forEach(result => {
-      var value = result.correctAnswer.toUpperCase().trim();
+      var value = result.correctAnswer.toUpperCase().trim().replace(/\s+/g, " ");
       tempArray.push({ questionNumber: result.questionNumber, correctAnswer: value })
     })
 
@@ -54,6 +60,12 @@ export class AddAnswersComponent implements OnInit {
           duration: 3 * 1000,
           data: "Answers Uploaded Successfully"
         });
+      } else if (res.status == 409) {
+        // this.snack.openFromComponent(SnackBarComponent, {
+        //   duration: 3 * 1000,
+        //   data: "Answers Already Uploaded, Please visit the edit Answer Page"
+        // });
+        this.router.navigate(['admin-panel/view-answers'])
       }
     })
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title
+  ) {
+    this.titleService.setTitle('Teacher Panel')
+  }
 
   ngOnInit() { }
 }

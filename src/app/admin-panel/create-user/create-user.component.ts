@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-user',
@@ -23,8 +24,10 @@ export class CreateUserComponent implements OnInit {
     private apiService: ApiService,
     private fb: FormBuilder,
     private helper: AnswerHelperService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Create User');
     this.CreateUserFormGroup = this.fb.group(
       {
         name: new FormControl('', [Validators.required]),
@@ -79,7 +82,7 @@ export class CreateUserComponent implements OnInit {
     const query = {
       username: user.username
     }
-    
+
     this.apiService.deleteUser(query).subscribe(data => {
       if (data.status == 200)
         this.ngOnInit()

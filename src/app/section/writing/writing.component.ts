@@ -6,8 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorServiceService } from 'src/app/shared/services/error-service/error-service.service';
 import { Title } from '@angular/platform-browser';
-import * as Rx from 'rxjs';
-import { AnswerHelperService } from '../shared/answer-helper/answer-helper.service';
 import { SnackBarComponent } from 'src/app/shared/components/snack-bar/snack-bar.component';
 import { finalize } from 'rxjs/operators';
 import { LoaderService } from 'src/app/shared/services/loader-service/loader.service';
@@ -46,8 +44,8 @@ export class WritingComponent implements OnInit {
     private snackbar: ErrorServiceService,
     private titleService: Title
   ) {
-    this.titleService.setTitle('Upload Document Section')
-    this.nav.testActive()
+    this.titleService.setTitle('Writing')
+    // this.nav.testActive()
     this.UploadForm = this.fb.group(
       {
         upload: new FormControl('', [Validators.required]),
@@ -89,6 +87,7 @@ export class WritingComponent implements OnInit {
 
   uploadImage(sheetNumber) {
     this.loader.show()
+    var newSheetNumber = sheetNumber.trim();
     const name = localStorage.getItem('name')
     const username = localStorage.getItem('username')
     const date = new Date().getTime()
@@ -104,7 +103,7 @@ export class WritingComponent implements OnInit {
               username: localStorage.getItem('username'),
               name: localStorage.getItem('name'),
               link: newUrl,
-              sheetNumber: sheetNumber,
+              sheetNumber: newSheetNumber,
               testNumber: this.testNumber,
               section: this.section
             }
@@ -112,7 +111,7 @@ export class WritingComponent implements OnInit {
               if (data.status == 200) {
                 this.snack.openFromComponent(SnackBarComponent, {
                   duration: 3 * 1000,
-                  data: "Sheet No. " + sheetNumber + " Uploaded Successfully"
+                  data: "Sheet No. " + newSheetNumber + " Uploaded Successfully"
                 });
               }
             })

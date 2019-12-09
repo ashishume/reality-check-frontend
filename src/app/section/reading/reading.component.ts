@@ -3,10 +3,7 @@ import { CalculateMarksService } from 'src/app/shared/services/calculate-marks/c
 import { AnswerHelperService } from './../shared/answer-helper/answer-helper.service';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit, HostListener } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
-import { NavbarService } from 'src/app/shared/services/navbar-service/navbar.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ErrorServiceService } from 'src/app/shared/services/error-service/error-service.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -21,8 +18,11 @@ export class ReadingComponent implements OnInit {
     private calculate: CalculateMarksService,
     private router: ActivatedRoute,
     private route: Router,
-    private apiService: ApiService
-  ) { }
+    private apiService: ApiService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Reading')
+  }
 
   answerDetails = []
   section;
@@ -62,7 +62,7 @@ export class ReadingComponent implements OnInit {
 
     let tempArray = []
     this.answerDetails.forEach(result => {
-      var value = result.QValue.toUpperCase().trim();
+      var value = result.QValue.toUpperCase().trim().replace(/\s+/g, " ");
       tempArray.push({ questionNumber: result.QNumber, correctAnswer: value })
     })
 

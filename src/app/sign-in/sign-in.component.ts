@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +20,10 @@ export class SignInComponent implements OnInit {
     public authService: AuthService,
     private route: Router,
     public matDialog: MatDialog,
-  ) { }
+    private titleService: Title,
+  ) {
+    this.titleService.setTitle('Sign In')
+  }
 
   username: string;
   ngOnInit() {

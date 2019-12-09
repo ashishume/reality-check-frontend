@@ -83,7 +83,6 @@ import { ProfileComponent } from './profile/profile.component';
     CalculateMarksService,
     httpInterceptorProviders,
     AnswerHelperService,
-    
 
   ],
   bootstrap: [AppComponent]

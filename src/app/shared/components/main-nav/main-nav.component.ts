@@ -21,13 +21,16 @@ export class MainNavComponent {
   userType;
   constructor(
     private breakpointObserver: BreakpointObserver,
-    public authService: AuthService
+    public authService: AuthService,
+    public nav: NavbarService
   ) {
     this.authService.username.subscribe(username => {
       this.username = username;
     })
+
     if (this.username == null) {
       this.username = localStorage.getItem('username')
     }
+
   }
 }

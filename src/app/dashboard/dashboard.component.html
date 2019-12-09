@@ -9,7 +9,7 @@
       <hr>
     </div>
     <div style="margin: 0 auto;" *ngIf="userType==='Academic Student' || userType==='General Student'">
-      <button mat-raised-button routerLink="/marks-sheet">Marks Sheet</button>
+      <button mat-raised-button routerLink="/marks-sheet"><img src="../../assets/document.png">Marks Sheet</button>
     </div>
     <div class="col-sm-12" style="text-align: center">
       <div *ngIf="userType==='Academic Student' || userType==='General Student'">
@@ -26,13 +26,13 @@
         <h4>Mock Tests</h4>
         <div *ngFor="let tests of testDetails">
           <mat-card>
-            <img src="../../assets/writing.png" class="writing-icon">
+            <img src="../../assets/test.png" class="writing-icon">
             <b>
               Test {{tests.testNumber}}
             </b>
             <button mat-raised-button [routerLink]="['/section']" [queryParams]="{testNumber:tests.testNumber}">
               Take Test
-              <img src="../../assets/forward.png"></button>
+              <img src="../../assets/paper-plane.png"></button>
 
           </mat-card>
           <br>

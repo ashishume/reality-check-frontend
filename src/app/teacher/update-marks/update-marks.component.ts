@@ -46,8 +46,6 @@ export class UpdateMarksComponent implements OnInit {
     this.countOfTests = this.helper.getTestNumber()
     this.helper.getUsers()
     this.helper.getUserDetails.subscribe(data => {
-      console.log(data);
-      
       this.userDetails = data;
 
     })

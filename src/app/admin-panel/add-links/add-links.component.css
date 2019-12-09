@@ -1,3 +1,6 @@
 .mat-form-field{
     width: 100%;
 }
+.table-responsive{
+    max-height: 67vh;
+}

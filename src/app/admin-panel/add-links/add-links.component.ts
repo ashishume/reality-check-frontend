@@ -3,6 +3,7 @@ import { AnswerHelperService } from 'src/app/section/shared/answer-helper/answer
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-links',
@@ -14,7 +15,11 @@ export class AddLinksComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private apiService: ApiService,
-    private helper: AnswerHelperService) { }
+    private helper: AnswerHelperService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Add Links')
+  }
   linkNames = [];
   testCount = [];
   link;
@@ -22,7 +27,7 @@ export class AddLinksComponent implements OnInit {
   testNumber;
   testName;
   studentTypes = [];
-  changeType = "General Student"
+  changeType = "Academic Student"
   ngOnInit() {
     this.studentTypes = this.helper.getStudentTypes()
     this.getLinksData()
@@ -33,12 +38,9 @@ export class AddLinksComponent implements OnInit {
     const query = {
       studentType: this.changeType
     }
-    console.log(query);
 
     this.apiService.getSectionLink(query).subscribe(data => {
       this.testDetails = data.body[0].testDetails;
-      console.log(this.testDetails);
-
     })
   }
 
@@ -52,7 +54,7 @@ export class AddLinksComponent implements OnInit {
     const dialogRef = this.matDialog.open(UpdateLinksComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result !== false && result != "") {
-        result.studentType=this.changeType
+        result.studentType = this.changeType
         this.apiService.updateTestLinks(result).subscribe(data => {
           if (data.status == 200) {
             this.getLinksData()

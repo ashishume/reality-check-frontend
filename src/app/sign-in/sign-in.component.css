@@ -1,15 +1,36 @@
-#column{
-    text-align: center;
+#column {
+  text-align: center;
 }
-.jumbotron{
-    background-color: white;
-    text-align: center;
+.jumbotron {
+  /* background-color: white; */
+  text-align: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  left: 0;
+  top: 0;
+  background-image: url("../../assets/homepage.jpg");
+  background-size: cover;
+  overflow: hidden;
+  /* color: white; */
 }
 
-.signin{
-    font-size: 15px;
-    padding: 10px;
-    width: 200px;
-    color: white;
-    background-color: cornflowerblue;
+.signin {
+  font-size: 15px;
+  padding: 10px;
+  width: 200px;
+  color: white;
+  border-radius: 40px;
+  background-color: #7258bf;
+}
+.ninemiles{
+  border-radius: 200px;
+  width: 100px;
+  height: 100px;
+}
+.inner-container{
+  color: white;
+  height: 100%;
+  background-color: rgba(0, 0, 0,0.4);
 }

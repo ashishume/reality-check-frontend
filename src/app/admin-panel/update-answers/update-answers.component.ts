@@ -2,6 +2,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AnswerHelperService } from './../../section/shared/answer-helper/answer-helper.service';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit, Inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-update-answers',
@@ -13,8 +14,10 @@ export class UpdateAnswersComponent implements OnInit {
   constructor(private helper: AnswerHelperService,
     private apiService: ApiService,
     private dialogRef: MatDialogRef<UpdateAnswersComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {
-
+    @Inject(MAT_DIALOG_DATA) public data,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Update Answers')
     if (data) {
       this.testNumber = data.testNumber;
       this.section = data.section;
@@ -40,7 +43,7 @@ export class UpdateAnswersComponent implements OnInit {
   }
 
   onSubmitUpdateAnswer() {
-    var answer = this.updatedAnswer.toUpperCase().trim()
+    var answer = this.updatedAnswer.toUpperCase().trim().replace(/\s+/g, " ")
     const body = {
       "questionNumber": this.questionNumber,
       "section": this.section,

@@ -1,5 +1,6 @@
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-issues',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IssuesComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Issues')
+  }
   Issues;
   ngOnInit() {
     this.apiService.getRaisedIssues().subscribe(data => {

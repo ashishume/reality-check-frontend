@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
-import { log } from 'util';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,8 +18,10 @@ export class DashboardComponent implements OnInit {
     private apiService: ApiService,
     private route: Router,
     private snack: MatSnackBar,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Dashboard')
   }
 
   public userType;

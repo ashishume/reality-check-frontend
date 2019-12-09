@@ -3,6 +3,7 @@ import { AnswerHelperService } from 'src/app/section/shared/answer-helper/answer
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-answers',
@@ -14,8 +15,10 @@ export class ViewAnswersComponent implements OnInit {
   constructor(private apiService: ApiService,
     private helper: AnswerHelperService,
     private matDialog: MatDialog,
-
-  ) { }
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('View Answers')
+  }
   countTests = []
   testNumber = 1;
   answersData = []
@@ -38,10 +41,8 @@ export class ViewAnswersComponent implements OnInit {
       section: this.section,
       studentType: this.changeType
     }
-    console.log(query);
 
     this.apiService.getAnswers(query).subscribe(data => {
-      console.log(data);
 
       if (data.status == 200) {
         this.answersData = data.body[0].answers;

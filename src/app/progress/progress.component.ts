@@ -1,6 +1,7 @@
 import { ApiService } from './../shared/services/api-service/api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from "chart.js";
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
@@ -9,7 +10,12 @@ import { Chart } from "chart.js";
 export class ProgressComponent implements OnInit {
   chart1: Chart;
   lengthOfArray = 0;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+    private titleService: Title,
+  ) {
+    this.titleService.setTitle('Progress')
+
+  }
   dynamicColors() {
     let tempArray = []
     for (let i = 0; i < this.lengthOfArray; i++) {

@@ -13,8 +13,8 @@ export class MarksSheetComponent implements OnInit {
 
   query;
   constructor(private apiService: ApiService,
+    private helper: AnswerHelperService,
     private titleService: Title,
-    private helper: AnswerHelperService
   ) {
     this.titleService.setTitle('Marks Sheet')
 
