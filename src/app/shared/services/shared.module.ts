@@ -14,6 +14,7 @@ import { SnackBarComponent } from '../components/snack-bar/snack-bar.component';
     ReactiveFormsModule,
     FormsModule,
     NgbModule
+    
   ], exports: [
     CommonModule,
     MaterialModule,

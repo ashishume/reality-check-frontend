@@ -99,4 +99,16 @@ export class ApiService {
     return this.httpService.callApi('GETBYPARAMS', '', 'marks/average', query)
   }
 
+  //NEW FEATURES----------------------------------------------------------------------
+
+  submitAttendance(body) {
+    return this.httpService.callApi('POST', body, 'teacher', '')
+  }
+
+  getAttendanceData(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'teacher', query)
+  }
+
+
+
 }

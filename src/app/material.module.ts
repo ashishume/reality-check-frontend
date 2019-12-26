@@ -29,10 +29,12 @@ import {
   MatRadioModule,
   MatCheckboxModule
 } from '@angular/material';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [],
   imports: [
+    NgxMaterialTimepickerModule,
     CommonModule,
     MatCardModule,
     MatPaginatorModule,
@@ -63,6 +65,7 @@ import {
     MatSnackBarModule
   ],
   exports: [
+    NgxMaterialTimepickerModule,
     CommonModule,
     MatDividerModule,
     MatCardModule,
@@ -93,4 +96,4 @@ import {
     MatSnackBarModule
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }

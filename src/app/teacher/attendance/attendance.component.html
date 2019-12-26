@@ -1,0 +1,65 @@
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Mark your attendance</h3>
+            for <b>
+                {{todayDate | date}}
+            </b>
+            <form [formGroup]="AttendanceFormGroup" #AttendanceForm="ngForm"
+                (ngSubmit)="onSubmitAttendance(AttendanceForm)">
+
+                <!-- <mat-form-field appearance="outline" class="example-full-width">
+                    <input matInput (click)="picker.open()" [matDatepicker]="picker" readonly [min]="minDate"
+                        [max]="maxDate" ngModel name="Date" formControlName="date" id="date" placeholder="Choose a date"
+                        required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker disabled=false touchUi #picker></mat-datepicker>
+                    <mat-error *ngIf="hasError('date', 'required')">Date is required</mat-error>
+                </mat-form-field> -->
+                <mat-form-field appearance="outline">
+                    <input matInput readonly [format]="24" placeholder="click to enter time" name="time"
+                        formControlName="time" [ngxTimepicker]="picker">
+                    <ngx-material-timepicker #picker [theme]="darkTheme">
+                    </ngx-material-timepicker>
+                </mat-form-field>
+
+                <mat-checkbox formControlName="isPresent" name="isPresent">Mark your attendance</mat-checkbox>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Write your task</mat-label>
+                    <textarea matInput rows="10" formControlName="message" name="message"></textarea>
+                </mat-form-field>
+                <button mat-raised-button style="width: 100%;" [disabled]="!AttendanceFormGroup.valid">Submit</button>
+
+            </form>
+
+        </div>
+
+        <div class="col-md-12">
+            <br>
+            <br>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr *ngFor="let attendance of attendanceInfo">
+                        <td style="min-width:120px ;">{{attendance.date}}</td>
+                        <td *ngFor="let item of attendance.attendanceData">
+                            <h4>At: {{item.time}}</h4>
+                            <div [class.show]="item.visible" class="message">
+                                <b>Task:</b> {{item.message}}
+                            </div>
+
+                            <strong>
+                                <span class="show-more"
+                                    (click)="item.visible = !item.visible">{{ item.visible ? 'Show less': 'Show More' }}</span>
+                            </strong>
+
+                        </td>
+                    </tr>
+                    <!-- </div> -->
+                </table>
+            </div>
+        </div>
+    </div>
