@@ -6,6 +6,7 @@ import { TeacherRoutingModule } from './teacher-routing.module';
 import { UploadAnswerSheetComponent } from './upload-answer-sheet/upload-answer-sheet.component';
 import { ShowWritingComponent } from './show-writing/show-writing.component';
 import { UpdateMarksComponent } from './update-marks/update-marks.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { UpdateMarksComponent } from './update-marks/update-marks.component';
     UploadAnswerSheetComponent,
     ShowWritingComponent,
     UpdateMarksComponent,
+    AttendanceComponent,
 
   ],
   imports: [

@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h3>Mark your attendance</h3>
+            for <b>
+                {{todayDate | date}}
+            </b>
+            <form [formGroup]="AttendanceFormGroup" #AttendanceForm="ngForm"
+                (ngSubmit)="onSubmitAttendance(AttendanceForm)">
+
+                <mat-form-field appearance="outline">
+                    <input matInput readonly [format]="24" placeholder="click to enter time" name="time"
+                        formControlName="time" [ngxTimepicker]="picker">
+                    <ngx-material-timepicker #picker [theme]="darkTheme">
+                    </ngx-material-timepicker>
+                </mat-form-field>
+
+                <mat-checkbox formControlName="isPresent" name="isPresent">Mark your attendance</mat-checkbox>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Write your task</mat-label>
+                    <textarea matInput rows="10" formControlName="message" name="message"></textarea>
+                </mat-form-field>
+                <button mat-raised-button style="width: 70%;" [disabled]="!AttendanceFormGroup.valid">Submit</button>
+
+            </form>
+
+        </div>
+
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Show attendance</p>
+                    <mat-form-field>
+                        <input matInput (click)="datePicker.open()" [matDatepicker]="datePicker" readonly
+                            [min]="minDate" [max]="maxDate" id="date" [(ngModel)]="date" placeholder="Choose a date"
+                            required>
+                        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                        <mat-datepicker disabled=false #datePicker></mat-datepicker>
+                    </mat-form-field>
+                    &nbsp;
+                    <button mat-stroked-button (click)="getAttendanceData(date)">Search</button>
+
+                    <div *ngIf="attendanceInfo">
+                        <p>Showing results for:<strong> {{currentDate}}</strong></p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>At:</td>
+                                    <td>Task:</td>
+                                </tr>
+                                <tr *ngFor="let attendance of attendanceInfo">
+                                    <td>{{attendance.time}}</td>
+                                    <td style="text-align: justify;">{{attendance.message}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div *ngIf="!attendanceInfo">
+                        <h3 style="text-align: center;">No Record found</h3>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
