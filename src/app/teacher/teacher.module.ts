@@ -1,3 +1,4 @@
+import { TeacherService } from './teacher-service/teacher.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/services/shared.module';
@@ -24,6 +25,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
   ], exports: [
     TeacherComponent
   ],
+  providers: [TeacherService],
   entryComponents: [
     UploadAnswerSheetComponent
   ]

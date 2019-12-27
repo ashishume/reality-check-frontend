@@ -1,5 +1,5 @@
 .mat-form-field {
-  width: 70%;
+  width: 100%;
 }
 .message {
   /* font-size: 16px; */
@@ -18,7 +18,12 @@
   cursor: pointer;
 }
 
-.table-responsive {
+#tasks {
   overflow: auto;
-  max-height: 350px;
+  max-height: 500px;
+}
+
+#attendance {
+  overflow: auto;
+  max-height: 500px;
 }

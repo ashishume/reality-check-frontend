@@ -1,3 +1,4 @@
+import { TeacherService } from './../teacher-service/teacher.service';
 import { ErrorServiceService } from './../../shared/services/error-service/error-service.service';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -22,26 +23,45 @@ export class AttendanceComponent implements OnInit {
   };
 
   public AttendanceFormGroup: FormGroup;
-  private todayDate: Date = new Date();
+  todayDate: Date = new Date();
   maxDate;
   minDate;
+  date;
   attendanceInfo;
+  checkChooseType = false;
   show = false;
   currentDate;
+  chooseTypes = [];
+  classTypes = [];
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
+    private teacherService: TeacherService,
     private notify: ErrorServiceService
   ) {
+
+    this.chooseTypes = this.teacherService.chooseType;
+    this.classTypes = this.teacherService.classType;
     this.AttendanceFormGroup = this.fb.group(
       {
-        // date: new FormControl('', [Validators.required]),
+        chooseType: new FormControl('', [Validators.required]),
+        classType: new FormControl('', []),
         message: new FormControl('', [Validators.required]),
-        isPresent: new FormControl(false, []),
-        time: new FormControl('', [Validators.required]),
+        studentName: new FormControl('', []),
+        startTime: new FormControl('', [Validators.required]),
+        endTime: new FormControl('', [Validators.required]),
       },
     )
 
+  }
+
+
+  checkChooseData(choose) {
+    if (choose == "ONLINE CLASS") {
+      this.checkChooseType = true;
+    } else {
+      this.checkChooseType = false;
+    }
   }
 
   public hasError = (controlName: string, errorName: string) => {
@@ -49,6 +69,7 @@ export class AttendanceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAttendanceData();
   }
 
 
@@ -61,24 +82,40 @@ export class AttendanceComponent implements OnInit {
 
     const username = localStorage.getItem('username');
     const newDate = selectedDate + "-" + selectedMonth + "-" + selectedYear;
-    const dateTime = newDate + "T" + formData.time;
+    let studentName;
+    let classType;
+    if (formData.chooseType == "ONLINE CLASS") {
+      studentName = formData.studentName;
+      classType = formData.classType;
+    } else {
+      studentName = "";
+      classType = ""
+    }
+
+
     const body = {
       username: username,
-      date: dateTime,
-      isPresent: formData.isPresent,
+      date: newDate,
+      startTime: formData.startTime,
+      endTime: formData.endTime,
+      studentName: studentName,
+      classType: classType,
+      isPresent: true,
+      chooseType: formData.chooseType,
       message: formData.message
     }
 
+
     this.apiService.submitAttendance(body).subscribe(response => {
       if (response.status == 200)
-        this.notify.showError("Attendance Marked")
-      this.ngOnInit()
+        this.notify.showError("Attendance Marked");
+      this.getAttendanceData()
     })
   }
 
 
-  getAttendanceData(date) {
-    const newDate = new Date(date);
+  getAttendanceData() {
+    const newDate = new Date();
     const currentDay = newDate.getDate();
     const currentMonth = newDate.getMonth() + 1;
     const currentYear = newDate.getFullYear();
