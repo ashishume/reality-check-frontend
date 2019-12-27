@@ -108,6 +108,9 @@ export class ApiService {
   getAttendanceData(query) {
     return this.httpService.callApi('GETBYPARAMS', '', 'teacher', query)
   }
+  getAttendanceDate(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'teacher/date', query)
+  }
 
 
 

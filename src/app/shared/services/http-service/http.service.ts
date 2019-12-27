@@ -8,8 +8,8 @@ import * as Rx from 'rxjs';
 export class HttpService {
 
   private Date;
-  public baseUrl = 'http://localhost:3000';
-  // public baseUrl = 'https://reality-check-app.herokuapp.com';
+  // public baseUrl = 'http://localhost:3000';
+  public baseUrl = 'https://reality-check-app.herokuapp.com';
   constructor(private http: HttpClient) { }
   // **********************API CALLS*********************************
 

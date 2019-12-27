@@ -1,3 +1,4 @@
+import { ErrorServiceService } from './../../shared/services/error-service/error-service.service';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -26,17 +27,12 @@ export class AttendanceComponent implements OnInit {
   minDate;
   attendanceInfo;
   show = false;
+  currentDate;
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private notify: ErrorServiceService
   ) {
-    this.minDate = this.todayDate.toJSON('yyyy-MM-dd');
-    this.maxDate = new Date(
-      this.todayDate.getFullYear(),
-      this.todayDate.getMonth(),
-      this.todayDate.getDate() + 7
-    );
-
     this.AttendanceFormGroup = this.fb.group(
       {
         // date: new FormControl('', [Validators.required]),
@@ -53,26 +49,6 @@ export class AttendanceComponent implements OnInit {
   }
 
   ngOnInit() {
-    const query = {
-      username: localStorage.getItem('username')
-    }
-    this.apiService.getAttendanceData(query).subscribe(response => {
-      if (response.status == 200) {
-        // console.log(response.body);
-
-        let attendanceData = []
-        this.attendanceInfo = response.body.info;
-        response.body.info.forEach(value => {
-          value.attendanceData.forEach(info => {
-            info.visible = false;
-          })
-          attendanceData.push(value);
-        })
-        this.attendanceInfo = attendanceData;
-        console.log(this.attendanceInfo);
-
-      }
-    })
   }
 
 
@@ -86,7 +62,6 @@ export class AttendanceComponent implements OnInit {
     const username = localStorage.getItem('username');
     const newDate = selectedDate + "-" + selectedMonth + "-" + selectedYear;
     const dateTime = newDate + "T" + formData.time;
-    // const dateTime = "28-12-2019" + "T" + formData.time;
     const body = {
       username: username,
       date: dateTime,
@@ -96,8 +71,37 @@ export class AttendanceComponent implements OnInit {
 
     this.apiService.submitAttendance(body).subscribe(response => {
       if (response.status == 200)
-        this.ngOnInit()
+        this.notify.showError("Attendance Marked")
+      this.ngOnInit()
+    })
+  }
+
+
+  getAttendanceData(date) {
+    const newDate = new Date(date);
+    const currentDay = newDate.getDate();
+    const currentMonth = newDate.getMonth() + 1;
+    const currentYear = newDate.getFullYear();
+    const currentDate = currentDay + "-" + currentMonth + "-" + currentYear;
+
+    const query = {
+      date: currentDate,
+      username: localStorage.getItem('username')
+    }
+
+    this.apiService.getAttendanceDate(query).subscribe(res => {
+      if (res.status == 200) {
+        let attendanceInfo = []
+        this.currentDate = res.body[0].date;
+        res.body[0].attendanceData.forEach(value => {
+          attendanceInfo.push(value)
+        })
+        this.attendanceInfo = attendanceInfo;
+
+      }
     })
 
   }
+
+
 }
