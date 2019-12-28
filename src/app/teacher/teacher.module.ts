@@ -9,6 +9,9 @@ import { ShowWritingComponent } from './show-writing/show-writing.component';
 import { UpdateMarksComponent } from './update-marks/update-marks.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { LeavesComponent } from './leaves/leaves.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { NoRightClickDirective } from '../no-right-click.directive';
+import { SharedFilesComponent } from './shared-files/shared-files.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { LeavesComponent } from './leaves/leaves.component';
     UpdateMarksComponent,
     AttendanceComponent,
     LeavesComponent,
-
+    DocumentsComponent,
+    NoRightClickDirective,
+    SharedFilesComponent
   ],
   imports: [
     CommonModule,

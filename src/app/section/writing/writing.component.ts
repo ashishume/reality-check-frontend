@@ -7,9 +7,9 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ErrorServiceService } from 'src/app/shared/services/error-service/error-service.service';
 import { Title } from '@angular/platform-browser';
 import { SnackBarComponent } from 'src/app/shared/components/snack-bar/snack-bar.component';
-import { finalize } from 'rxjs/operators';
 import { LoaderService } from 'src/app/shared/services/loader-service/loader.service';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
