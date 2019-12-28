@@ -1,23 +1,23 @@
-import { ErrorServiceService } from './../../shared/services/error-service/error-service.service';
-import { LoaderService } from './../../shared/services/loader-service/loader.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../shared/services/api-service/api.service';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { LoaderService } from '../shared/services/loader-service/loader.service';
+import { ErrorServiceService } from '../shared/services/error-service/error-service.service';
 import { finalize } from 'rxjs/operators';
-@Component({
-  selector: 'app-shared-files',
-  templateUrl: './shared-files.component.html',
-  styleUrls: ['./shared-files.component.css']
-})
-export class SharedFilesComponent implements OnInit {
 
+@Component({
+  selector: 'app-file-sharing',
+  templateUrl: './file-sharing.component.html',
+  styles: []
+})
+export class FileSharingComponent implements OnInit {
 
   config = {
     displayKey: "name",
     search: true,
     height: 'auto',
-    placeholder: 'Select Students',
+    placeholder: 'Select Teachers',
     customComparator: () => { },
     // limitTo: options.length,
     moreText: 'more',
@@ -28,12 +28,11 @@ export class SharedFilesComponent implements OnInit {
   }
 
   dropdownOptions = [];
-  studentsArray = [];
+  teachersArray = [];
   public SharedFileFormGroup: FormGroup;
   ownSharedFiles;
-  SharedFiles;
   sharedFiles;
-  students = [];
+  teachers = []
   constructor(
     private apiService: ApiService,
     private fb: FormBuilder,
@@ -50,24 +49,16 @@ export class SharedFilesComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.fetchSharedFiles();
     this.fetchOwnSharedFiles();
 
-
-    this.apiService.fetchStudentDetails().subscribe(res => {
+    this.apiService.fetchTeacherDetails().subscribe(res => {
       if (res.status == 200) {
-        this.students = res.body;
-        this.dropdownOptions = this.students;
+        this.teachers = res.body;
+        this.dropdownOptions = this.teachers;
       }
     })
   }
-
-
-  selectionChanged(event) {
-    this.studentsArray = event.value;
-  }
-
 
   fetchSharedFiles() {
     const query = {
@@ -92,6 +83,12 @@ export class SharedFilesComponent implements OnInit {
 
   }
 
+
+  selectionChanged(event) {
+    this.teachersArray = event.value;
+  }
+
+
   actualDataSize;
   fileSource;
   selectedFile;
@@ -104,8 +101,8 @@ export class SharedFilesComponent implements OnInit {
   }
 
   shareFileHandler() {
-    let tempStudentsArray;
-    tempStudentsArray = this.getStudentsArray(this.studentsArray);
+    let tempTeachersArray;
+    tempTeachersArray = this.getTeachersArray(this.teachersArray);
 
     this.loader.show()
     const name = localStorage.getItem('name')
@@ -123,13 +120,13 @@ export class SharedFilesComponent implements OnInit {
               fileType: this.selectedFile.type,
               ownerName: name,
               username: username,
-              sharedPeople: tempStudentsArray,
+              sharedPeople: tempTeachersArray,
               fileUrl: url
             }
 
             this.apiService.shareFiles(body).subscribe((data: any) => {
               if (data.status == 200) {
-                this.fetchOwnSharedFiles()
+                this.fetchOwnSharedFiles();
                 this.notify.showError("File Shared Successfully")
               }
             })
@@ -140,7 +137,7 @@ export class SharedFilesComponent implements OnInit {
     ).subscribe();
   }
 
-  getStudentsArray(array) {
+  getTeachersArray(array) {
     let tempArray = [];
     array.forEach(value => {
       tempArray.push(value.username)

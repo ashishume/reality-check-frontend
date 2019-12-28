@@ -138,7 +138,7 @@ export class ApiService {
     return this.httpService.callApi('GET', '', 'users/teacher', '')
   }
 
-  //FETCH TEACHERS DETAILS
+  //FETCH STUDENTS DETAILS
   fetchStudentDetails() {
     return this.httpService.callApi('GET', '', 'users/student', '')
   }

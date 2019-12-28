@@ -2,7 +2,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h4>Share files with students</h4>
+            <a routerLink="/">Back</a>
+            <h4>Share files with teachers</h4>
             <form novalidate [formGroup]="SharedFileFormGroup" #SharedForm="ngForm" (ngSubmit)="shareFileHandler()">
 
                 <ngx-select-dropdown (change)="selectionChanged($event)" name="sharedPeople"
@@ -20,7 +21,7 @@
             </form>
         </div>
 
-        <div id="shared" class="col-md-6">
+        <div id="shared" class="col-md-6" >
 
             <h4>Shared Files</h4>
             <mat-tab-group class="mat-tab-groups" mat-align-tabs="center">
@@ -53,9 +54,10 @@
                             <p style="text-align: center;">No Files has shared</p>
                         </div>
 
-
                     </ng-template>
                 </mat-tab>
+
+
                 <mat-tab class="mat-tab" label="Shared Files">
                     <ng-template matTabContent>
 
@@ -87,6 +89,7 @@
                             <br>
                             <p style="text-align: center;">No Files has shared</p>
                         </div>
+
 
 
                     </ng-template>

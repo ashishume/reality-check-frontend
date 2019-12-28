@@ -12,6 +12,12 @@
   position: relative;
   bottom: 7px;
 }
+
+.file-icon{
+  width: 25px;
+  height: 25px;
+}
+
 .mat-raised-button:hover {
   background-color: #7258BF;
   color: white;

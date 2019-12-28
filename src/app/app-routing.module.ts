@@ -1,3 +1,4 @@
+import { FileSharingComponent } from './file-sharing/file-sharing.component';
 import { AdminGuard } from './shared/guard/admin/admin.guard';
 import { MarksSheetComponent } from './marks-sheet/marks-sheet.component';
 import { AuthGuard } from './shared/guard/auth/auth-guard.service';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'results', component: ResultsComponent, canActivate: [AuthGuard] },
   { path: 'progress', component: ProgressComponent, canActivate: [AuthGuard] },
   { path: 'marks-sheet', component: MarksSheetComponent, canActivate: [AuthGuard] },
+  { path: 'file-sharing', component: FileSharingComponent, canActivate: [AuthGuard] },
   {
     path: 'section',
     loadChildren: () => import('./section/section.module').then(m => m.SectionModule),

@@ -1,4 +1,3 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalculateMarksService } from './shared/services/calculate-marks/calculate-marks.service';
 import { LoaderService } from './shared/services/loader-service/loader.service';
 import { HttpService } from './shared/services/http-service/http.service';
@@ -15,7 +14,7 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
@@ -34,6 +33,7 @@ import { SigninDialogComponent } from './shared/components/signin-dialog/signin-
 import { httpInterceptorProviders } from './shared/services/interceptor-service';
 import { AnswerHelperService } from './section/shared/answer-helper/answer-helper.service';
 import { ProfileComponent } from './profile/profile.component';
+import { FileSharingComponent } from './file-sharing/file-sharing.component';
 
 
 
@@ -50,6 +50,7 @@ import { ProfileComponent } from './profile/profile.component';
     ProgressComponent,
     SigninDialogComponent,
     ProfileComponent,
+    FileSharingComponent,
 
 
   ],
