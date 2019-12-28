@@ -112,6 +112,13 @@ export class ApiService {
     return this.httpService.callApi('GETBYPARAMS', '', 'teacher/date', query)
   }
 
+  //LEAVES
+  applyLeave(body) {
+    return this.httpService.callApi('POST', body, 'leave', '')
+  }
+  fetchLeaves(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'leave', query)
+  }
 
 
 }

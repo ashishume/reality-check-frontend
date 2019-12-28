@@ -8,6 +8,7 @@ import { UploadAnswerSheetComponent } from './upload-answer-sheet/upload-answer-
 import { ShowWritingComponent } from './show-writing/show-writing.component';
 import { UpdateMarksComponent } from './update-marks/update-marks.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { LeavesComponent } from './leaves/leaves.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
     ShowWritingComponent,
     UpdateMarksComponent,
     AttendanceComponent,
+    LeavesComponent,
 
   ],
   imports: [
