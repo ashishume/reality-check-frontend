@@ -3,19 +3,29 @@
     <div class="col-sm-12">
 
       <mat-tab-group class="mat-tab-groups" mat-align-tabs="center">
-        <mat-tab class="mat-tab" label="Writing Answers">
+        <mat-tab class="mat-tab" label="File Sharing">
           <ng-template matTabContent>
-            <app-show-writing></app-show-writing>
+            <app-shared-files></app-shared-files>
           </ng-template>
         </mat-tab>
-        <mat-tab class="mat-tab" label="Upload Marks">
+        <mat-tab class="mat-tab" label="Leaves">
           <ng-template matTabContent>
-            <app-update-marks></app-update-marks>
+            <app-leaves></app-leaves>
           </ng-template>
         </mat-tab>
         <mat-tab class="mat-tab" label="Attendance">
           <ng-template matTabContent>
             <app-attendance></app-attendance>
+          </ng-template>
+        </mat-tab>
+        <mat-tab class="mat-tab" label="Writing Answers (Mock)">
+          <ng-template matTabContent>
+            <app-show-writing></app-show-writing>
+          </ng-template>
+        </mat-tab>
+        <mat-tab class="mat-tab" label="Upload Marks (Mock)">
+          <ng-template matTabContent>
+            <app-update-marks></app-update-marks>
           </ng-template>
         </mat-tab>
 

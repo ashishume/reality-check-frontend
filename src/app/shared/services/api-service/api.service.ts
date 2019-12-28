@@ -99,6 +99,8 @@ export class ApiService {
     return this.httpService.callApi('GETBYPARAMS', '', 'marks/average', query)
   }
 
+
+
   //NEW FEATURES----------------------------------------------------------------------
 
   submitAttendance(body) {
@@ -111,6 +113,36 @@ export class ApiService {
   getAttendanceDate(query) {
     return this.httpService.callApi('GETBYPARAMS', '', 'teacher/date', query)
   }
+
+  //LEAVES
+  applyLeave(body) {
+    return this.httpService.callApi('POST', body, 'leave', '')
+  }
+  fetchLeaves(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'leave', query)
+  }
+
+  //SHARED FILES
+  shareFiles(body) {
+    return this.httpService.callApi('POST', body, 'file', '')
+  }
+  fetchSharedFiles(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'file', query)
+  }
+  fetchOwnSharedFiles(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'file/shared', query)
+  }
+
+  //FETCH TEACHERS DETAILS
+  fetchTeacherDetails() {
+    return this.httpService.callApi('GET', '', 'users/teacher', '')
+  }
+
+  //FETCH STUDENTS DETAILS
+  fetchStudentDetails() {
+    return this.httpService.callApi('GET', '', 'users/student', '')
+  }
+
 
 
 

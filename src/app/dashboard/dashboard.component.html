@@ -9,7 +9,9 @@
       <hr>
     </div>
     <div style="margin: 0 auto;" *ngIf="userType==='Academic Student' || userType==='General Student'">
-      <button mat-raised-button routerLink="/marks-sheet"><img src="../../assets/document.png">Marks Sheet</button>
+      <button mat-stroked-button routerLink="/marks-sheet"><img src="../../assets/document.png">Marks Sheet</button>
+      <button mat-stroked-button routerLink="/file-sharing"><img src="../../assets/file.png" class="file-icon">File
+        Sharing</button>
     </div>
     <div class="col-sm-12" style="text-align: center">
       <div *ngIf="userType==='Academic Student' || userType==='General Student'">
@@ -42,11 +44,17 @@
 
       <div class="user" *ngIf="userType==='Admin'">
         <h2>Admin User</h2>
-        <a routerLink="/admin-panel">Go to Admin Panel</a>
+        <button routerLink="/admin-panel" mat-stroked-button color="primary">Admin Panel<i class="material-icons">
+            arrow_right_alt
+          </i></button>
+        <br><br><br>
       </div>
       <div class="user" *ngIf="userType==='Teacher'">
         <h2>Teacher</h2>
-        <a routerLink="/teacher">Go to Teacher Panel</a>
+        <button routerLink="/teacher" mat-stroked-button color="primary">Teacher Panel<i class="material-icons">
+            arrow_right_alt
+          </i></button>
+        <br><br><br>
       </div>
 
       <div class="icon" style="text-align: center;">

@@ -1,3 +1,4 @@
+import { TeacherService } from './teacher-service/teacher.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/services/shared.module';
@@ -7,6 +8,10 @@ import { UploadAnswerSheetComponent } from './upload-answer-sheet/upload-answer-
 import { ShowWritingComponent } from './show-writing/show-writing.component';
 import { UpdateMarksComponent } from './update-marks/update-marks.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { LeavesComponent } from './leaves/leaves.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { NoRightClickDirective } from '../no-right-click.directive';
+import { SharedFilesComponent } from './shared-files/shared-files.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,10 @@ import { AttendanceComponent } from './attendance/attendance.component';
     ShowWritingComponent,
     UpdateMarksComponent,
     AttendanceComponent,
-
+    LeavesComponent,
+    DocumentsComponent,
+    NoRightClickDirective,
+    SharedFilesComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +32,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
   ], exports: [
     TeacherComponent
   ],
+  providers: [TeacherService],
   entryComponents: [
     UploadAnswerSheetComponent
   ]

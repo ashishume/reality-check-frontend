@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from '../components/loader/loader.component';
 import { SnackBarComponent } from '../components/snack-bar/snack-bar.component';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 @NgModule({
   declarations: [SnackBarComponent, LoaderComponent],
@@ -13,9 +14,11 @@ import { SnackBarComponent } from '../components/snack-bar/snack-bar.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
-    
+    NgbModule,
+    SelectDropDownModule
+
   ], exports: [
+    SelectDropDownModule,
     CommonModule,
     MaterialModule,
     NgbModule,

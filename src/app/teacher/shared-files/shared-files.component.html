@@ -1,0 +1,104 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Share files with students</h4>
+            <form novalidate [formGroup]="SharedFileFormGroup" #SharedForm="ngForm" (ngSubmit)="shareFileHandler()">
+
+                <ngx-select-dropdown (change)="selectionChanged($event)" name="sharedPeople"
+                    formControlName="sharedPeople" [multiple]="true" [config]="config" [options]="dropdownOptions">
+                </ngx-select-dropdown>
+                <br>
+                <br>
+                <input type="file" formControlName="upload" name="upload" class="input" required
+                    (change)="onFileSelected($event)">
+
+                <br>
+                <br>
+                <button style="width:100%" mat-raised-button [disabled]="!SharedFileFormGroup.valid"
+                    color="accent">Share File</button>
+            </form>
+        </div>
+
+        <div id="shared" class="col-md-6">
+
+            <h4>Shared Files</h4>
+            <mat-tab-group class="mat-tab-groups" mat-align-tabs="center">
+
+                <mat-tab class="mat-tab" label="Shared with me">
+                    <ng-template matTabContent>
+
+                        <div class="table-responsive" *ngIf="sharedFiles">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>File Link</td>
+                                    <td>Shared by</td>
+                                    <td>Shared username</td>
+                                </tr>
+                                <tr *ngFor="let share of sharedFiles">
+                                    <td>
+                                        <a target="_blank" [href]="share.fileUrl">
+                                            <button mat-raised-button>Download</button>
+                                        </a>
+                                    </td>
+                                    <td>{{share.ownerName}}</td>
+                                    <td>{{share.username}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <div *ngIf="!sharedFiles">
+                            <br>
+                            <p style="text-align: center;">No Files has shared</p>
+                        </div>
+
+
+                    </ng-template>
+                </mat-tab>
+                <mat-tab class="mat-tab" label="Shared Files">
+                    <ng-template matTabContent>
+
+
+                        <div class="table-responsive" *ngIf="ownSharedFiles">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>File Link</td>
+                                    <td>Shared with</td>
+                                    <td>File Type</td>
+                                </tr>
+                                <tr *ngFor="let share of ownSharedFiles">
+                                    <td>
+                                        <a target="_blank" [href]="share.fileUrl">
+                                            <button mat-raised-button>Download</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div *ngFor="let list of share.sharedPeople;let i=index">
+                                            {{i+1}}) {{list}}
+                                        </div>
+                                    </td>
+                                    <td>{{share.fileType}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div *ngIf="!ownSharedFiles">
+                            <br>
+                            <p style="text-align: center;">No Files has shared</p>
+                        </div>
+
+
+                    </ng-template>
+                </mat-tab>
+
+
+            </mat-tab-group>
+
+
+
+
+
+        </div>
+    </div>
+</div>

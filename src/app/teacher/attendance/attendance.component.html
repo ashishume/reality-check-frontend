@@ -1,67 +1,113 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-5">
-            <h3>Mark your attendance</h3>
+        <div class="col-md-5" id="attendance">
+            <h3>Daily Achievements</h3>
             for <b>
                 {{todayDate | date}}
             </b>
             <form [formGroup]="AttendanceFormGroup" #AttendanceForm="ngForm"
                 (ngSubmit)="onSubmitAttendance(AttendanceForm)">
 
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <mat-form-field appearance="outline">
+                            <input matInput readonly [format]="24" placeholder="Start Time" name="startTime"
+                                formControlName="startTime" [ngxTimepicker]="startTimePicker">
+                            <ngx-material-timepicker #startTimePicker [theme]="darkTheme">
+                            </ngx-material-timepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+
+                        <mat-form-field appearance="outline">
+                            <input matInput readonly [format]="24" placeholder="End Time" name="endTime"
+                                formControlName="endTime" [ngxTimepicker]="endTimePicker">
+                            <ngx-material-timepicker #endTimePicker [theme]="darkTheme">
+                            </ngx-material-timepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
                 <mat-form-field appearance="outline">
-                    <input matInput readonly [format]="24" placeholder="click to enter time" name="time"
-                        formControlName="time" [ngxTimepicker]="picker">
-                    <ngx-material-timepicker #picker [theme]="darkTheme">
-                    </ngx-material-timepicker>
+                    <mat-label>Choose Type</mat-label>
+                    <mat-select formControlName="chooseType" name="chooseType">
+                        <mat-option value="">select an option</mat-option>
+                        <mat-option [value]="choose" (click)="checkChooseData(choose)"
+                            *ngFor="let choose of chooseTypes">{{choose}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
 
-                <mat-checkbox formControlName="isPresent" name="isPresent">Mark your attendance</mat-checkbox>
+
+                <div *ngIf="checkChooseType">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Student Name</mat-label>
+                        <input matInput formControlName="studentName" name="studentName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Class Type</mat-label>
+                        <mat-select formControlName="classType" name="classType">
+                            <mat-option value="">select an option</mat-option>
+                            <mat-option [value]="class" *ngFor="let class of classTypes">{{class}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
 
                 <mat-form-field appearance="outline">
                     <mat-label>Write your task</mat-label>
                     <textarea matInput rows="10" formControlName="message" name="message"></textarea>
                 </mat-form-field>
-                <button mat-raised-button style="width: 70%;" [disabled]="!AttendanceFormGroup.valid">Submit</button>
-
+                <button mat-raised-button color="accent" style="width: 100%;"
+                    [disabled]="!AttendanceFormGroup.valid">Submit</button>
+                <br>
+                <br>
             </form>
 
         </div>
 
         <div class="col-md-7">
             <div class="row">
-                <div class="col-md-12">
-                    <p>Show attendance</p>
-                    <mat-form-field>
+                <div class="col-md-12" id="tasks">
+                    <h3 style="text-align: center;">Today's Task</h3>
+                    <!-- <mat-form-field>
                         <input matInput (click)="datePicker.open()" [matDatepicker]="datePicker" readonly
                             [min]="minDate" [max]="maxDate" id="date" [(ngModel)]="date" placeholder="Choose a date"
                             required>
                         <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
                         <mat-datepicker disabled=false #datePicker></mat-datepicker>
-                    </mat-form-field>
-                    &nbsp;
-                    <button mat-stroked-button (click)="getAttendanceData(date)">Search</button>
+                    </mat-form-field> -->
+                    <!-- &nbsp; -->
+                    <!-- <button mat-stroked-button (click)="getAttendanceData(date)">Search</button> -->
 
                     <div *ngIf="attendanceInfo">
-                        <p>Showing results for:<strong> {{currentDate}}</strong></p>
+                        <!-- <p>Showing results for:<strong> {{currentDate}}</strong></p> -->
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>At:</td>
-                                    <td>Task:</td>
+                                    <td>Choose Type</td>
+                                    <td>Student Name</td>
+                                    <td>Class Type</td>
+                                    <td>Start Time</td>
+                                    <td>End Time</td>
+                                    <td>Task</td>
                                 </tr>
                                 <tr *ngFor="let attendance of attendanceInfo">
-                                    <td>{{attendance.time}}</td>
+                                    <td>{{attendance.chooseType}}</td>
+                                    <td *ngIf="attendance.studentName.length">{{attendance.studentName}}</td>
+                                    <td *ngIf="attendance.classType.length">{{attendance.classType}}</td>
+                                    <td *ngIf="!attendance.studentName.length">N/A</td>
+                                    <td *ngIf="!attendance.classType.length">N/A</td>
+                                    <td>{{attendance.startTime}}</td>
+                                    <td>{{attendance.endTime}}</td>
                                     <td style="text-align: justify;">{{attendance.message}}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div *ngIf="!attendanceInfo">
-                        <h3 style="text-align: center;">No Record found</h3>
+                        <p style="text-align: center;">No tasks found</p>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
