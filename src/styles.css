@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import url("https://fonts.googleapis.com/css?family=Kodchasan&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Kodchasan&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap"); */
+
 * {
   box-sizing: border-box;
-  font-family: "Kodchasan", sans-serif;
+  font-family: "Comfortaa", cursive;
+  /* font-family: "Kodchasan", sans-serif; */
 }
 html,
 body {
@@ -14,7 +17,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Kodchasan", sans-serif;
+  font-family: "Comfortaa", cursive;
   overflow-x: hidden;
 }
 

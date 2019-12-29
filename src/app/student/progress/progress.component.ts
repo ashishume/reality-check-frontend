@@ -1,4 +1,4 @@
-import { ApiService } from './../shared/services/api-service/api.service';
+import { ApiService } from '../../shared/services/api-service/api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from "chart.js";
 import { Title } from '@angular/platform-browser';

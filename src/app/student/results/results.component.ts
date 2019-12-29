@@ -1,8 +1,8 @@
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
-import { CalculateMarksService } from './../shared/services/calculate-marks/calculate-marks.service';
+import { CalculateMarksService } from '../../shared/services/calculate-marks/calculate-marks.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavbarService } from '../shared/services/navbar-service/navbar.service';
+import { NavbarService } from '../../shared/services/navbar-service/navbar.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
