@@ -13,20 +13,6 @@ import { finalize } from 'rxjs/operators';
 export class SharedFilesComponent implements OnInit {
 
 
-  config = {
-    displayKey: "name",
-    search: true,
-    height: 'auto',
-    placeholder: 'Select Students',
-    customComparator: () => { },
-    limitTo: 4,
-    moreText: 'more',
-    noResultsFound: 'No results found!',
-    searchPlaceholder: 'Search',
-    searchOnKey: 'username',
-    clearOnSelection: false,
-  }
-
   dropdownOptions = [];
   studentsArray = [];
   public SharedFileFormGroup: FormGroup;
@@ -35,6 +21,24 @@ export class SharedFilesComponent implements OnInit {
   sharedFiles;
   students = [];
   message;
+
+
+
+  config = {
+    displayKey: "name",
+    search: true,
+    height: '250px',
+    placeholder: 'Select Students',
+    customComparator: () => { },
+    limitTo: this.dropdownOptions.length,
+    moreText: 'more',
+    noResultsFound: 'No results found!',
+    searchPlaceholder: 'Search',
+    searchOnKey: 'username',
+    clearOnSelection: false,
+  }
+
+
   constructor(
     private apiService: ApiService,
     private fb: FormBuilder,
@@ -90,7 +94,7 @@ export class SharedFilesComponent implements OnInit {
     this.apiService.fetchOwnSharedFiles(query).subscribe(ownSharedFiles => {
       if (ownSharedFiles.status == 200)
         this.ownSharedFiles = ownSharedFiles.body
-      
+
     })
 
   }

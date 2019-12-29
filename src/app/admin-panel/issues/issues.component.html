@@ -3,7 +3,7 @@
         <div class="col-sm-12">
             <a routerLink="/admin-panel">Back</a>
             <h2>Issues</h2>
-            <div *ngIf="Issues.length" class="table-responsive">
+            <div *ngIf="Issues" class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
                         <td>Name</td>
@@ -37,7 +37,7 @@
                     </tr>
                 </table>
             </div>
-            <div *ngIf="!Issues.length" style="text-align: center;">
+            <div *ngIf="!Issues" style="text-align: center;">
                 <p class="alert alert-danger">No Issues found</p>
             </div>
         </div>

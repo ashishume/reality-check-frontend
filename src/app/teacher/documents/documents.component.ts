@@ -15,8 +15,6 @@ export class DocumentsComponent implements OnInit {
 
 
   check(event) {
-    console.log(event);
-
     return false;
   }
 }

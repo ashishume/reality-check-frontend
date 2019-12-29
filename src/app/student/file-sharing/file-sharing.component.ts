@@ -13,20 +13,6 @@ import { finalize } from 'rxjs/operators';
 })
 export class FileSharingComponent implements OnInit {
 
-  config = {
-    displayKey: "name",
-    search: true,
-    height: 'auto',
-    placeholder: 'Select Teachers',
-    customComparator: () => { },
-    limitTo: 4,
-    moreText: 'more',
-    noResultsFound: 'No results found!',
-    searchPlaceholder: 'Search',
-    searchOnKey: 'username',
-    clearOnSelection: false,
-  }
-
   dropdownOptions = [];
   teachersArray = [];
   message;
@@ -34,6 +20,23 @@ export class FileSharingComponent implements OnInit {
   ownSharedFiles;
   sharedFiles;
   teachers = []
+
+
+  config = {
+    displayKey: "name",
+    search: true,
+    height: '250px',
+    placeholder: 'Select Teachers',
+    customComparator: () => { },
+    limitTo: this.dropdownOptions.length,
+    moreText: 'more',
+    noResultsFound: 'No results found!',
+    searchPlaceholder: 'Search',
+    searchOnKey: 'username',
+    clearOnSelection: false,
+  }
+
+
   constructor(
     private apiService: ApiService,
     private fb: FormBuilder,

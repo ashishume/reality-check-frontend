@@ -1,0 +1,81 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a routerLink="/admin-panel">Back</a>
+            <h3 style="text-align: center;">Leaves Taken</h3>
+
+            <form [formGroup]="LeaveSearchFormGroup" #LeaveSearchForm="ngForm"
+                (ngSubmit)="onSearchLeave(LeaveSearchForm)">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Select Month</mat-label>
+                            <mat-select [(ngModel)]="month" formControlName="month" name="month">
+                                <mat-option value="">select month</mat-option>
+                                <mat-option [value]="month.month" *ngFor="let month of months">
+                                    {{month.monthName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Select Year</mat-label>
+                            <mat-select [(ngModel)]="year" formControlName="year" name="year">
+                                <mat-option value="">select year</mat-option>
+                                <mat-option [value]="year" *ngFor="let year of years">
+                                    {{year}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Select Teacher</mat-label>
+                            <mat-select [(ngModel)]="username" formControlName="username" name="username">
+                                <mat-option value="">select teacher</mat-option>
+                                <mat-option [value]="teacherList.username" *ngFor="let teacherList of teacherDetails">
+                                    {{teacherList.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <button mat-raised-button color="accent"
+                            [disabled]="!LeaveSearchFormGroup.valid">Search</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <div *ngIf="leaves">
+                <p>Showing results for: {{month}}, {{year}}</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Date</td>
+                            <td>Leave Type</td>
+                            <td>Start Time</td>
+                            <td>End Time</td>
+                            <td>Reason</td>
+                        </tr>
+                        <tr *ngFor="let leave of leaves">
+                            <td>{{leave.date}}</td>
+                            <td>{{leave.leaveType}}</td>
+                            <td>{{leave.startTime}}</td>
+                            <td>{{leave.endTime}}</td>
+                            <td style="text-align: justify;">{{leave.message}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div *ngIf="!leaves">
+                <p style="text-align: center;">No leaves found</p>
+            </div>
+        </div>
+    </div>
+</div>
