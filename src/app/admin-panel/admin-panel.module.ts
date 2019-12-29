@@ -11,6 +11,8 @@ import { UpdateLinksComponent } from './update-links/update-links.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { IssuesComponent } from './issues/issues.component';
+import { LeaveDetailsComponent } from './leave-details/leave-details.component';
+import { AttendanceDetailsComponent } from './attendance-details/attendance-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { IssuesComponent } from './issues/issues.component';
     UpdateLinksComponent,
     CreateUserComponent,
     UpdateUserComponent,
-    IssuesComponent
+    IssuesComponent,
+    LeaveDetailsComponent,
+    AttendanceDetailsComponent,
   ],
   imports: [
     CommonModule,

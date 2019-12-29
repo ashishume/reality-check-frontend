@@ -1,0 +1,72 @@
+<br>
+<div class="container">
+<a routerLink="/admin-panel/">Back</a>
+    <form [formGroup]="AttendanceFormGroup" #AttendanceForm="ngForm" (ngSubmit)="searchAttendance(AttendanceForm)">
+        <h3>Attendance Details</h3>
+        <div class="row">
+            <div class="col-md-4">
+
+                <mat-form-field>
+                    <input matInput (click)="datePicker.open()" [matDatepicker]="datePicker" readonly id="date"
+                        [(ngModel)]="date" formControlName="date" name="date" placeholder="Choose a date" required>
+                    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                    <mat-datepicker disabled=false #datePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+
+                <mat-form-field>
+                    <mat-label>Select Teacher</mat-label>
+                    <mat-select [(ngModel)]="username" formControlName="username" name="username">
+                        <mat-option value="">select Username</mat-option>
+                        <mat-option [value]="teacher.username" *ngFor="let teacher of teachersList">
+                            {{teacher.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <button id="search-button" [disabled]="!AttendanceFormGroup.valid" mat-stroked-button>Search</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngIf="attendanceInfo">
+                Showing results for: {{date | date}}
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Choose Type</td>
+                            <td>Student Name</td>
+                            <td>Class Type</td>
+                            <td>Start Time</td>
+                            <td>End Time</td>
+                            <td>Task</td>
+                        </tr>
+                        <tr *ngFor="let attendance of attendanceInfo">
+                            <td>{{attendance.chooseType}}</td>
+                            <td *ngIf="attendance.studentName.length">{{attendance.studentName}}</td>
+                            <td *ngIf="attendance.classType.length">{{attendance.classType}}</td>
+                            <td *ngIf="!attendance.studentName.length">N/A</td>
+                            <td *ngIf="!attendance.classType.length">N/A</td>
+                            <td>{{attendance.startTime}}</td>
+                            <td>{{attendance.endTime}}</td>
+                            <td style="text-align: justify;">{{attendance.message}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="!attendanceInfo">
+        <p style="text-align: center;">No tasks found</p>
+    </div>
+
+</div>

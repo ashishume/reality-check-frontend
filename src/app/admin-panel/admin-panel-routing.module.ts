@@ -1,3 +1,5 @@
+import { AttendanceDetailsComponent } from './attendance-details/attendance-details.component';
+import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { IssuesComponent } from './issues/issues.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ViewAnswersComponent } from './view-answers/view-answers.component';
@@ -15,6 +17,8 @@ const route: Routes = [
   { path: 'add-links', component: AddLinksComponent },
   { path: 'view-answers', component: ViewAnswersComponent },
   { path: 'create-user', component: CreateUserComponent },
+  { path: 'leave-details', component: LeaveDetailsComponent },
+  { path: 'attendance-details', component: AttendanceDetailsComponent },
 
   {
     path: '',

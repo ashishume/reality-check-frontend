@@ -14,7 +14,7 @@ export class IssuesComponent implements OnInit {
   ) {
     this.titleService.setTitle('Issues')
   }
-  Issues;
+  Issues = [];
   ngOnInit() {
     this.apiService.getRaisedIssues().subscribe(data => {
       if (data.status == 200)

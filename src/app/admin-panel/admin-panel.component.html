@@ -1,27 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="table-responsive">
+    <div class="col-sm-12">
+      <br>
+      <a routerLink="/">Dashboard</a>
 
-      <h3 style="text-align: center">Admin Panel</h3>
-      <table class="table table-bordered">
-        <tr>
-          <td>
-            <a routerLink="/admin-panel/add-answers" mat-list-item>Add Answers</a>
-          </td>
-          <td>
-            <a routerLink="/admin-panel/add-links" mat-list-item>Add/Edit Links</a>
-          </td>
-          <td>
-            <a routerLink="/admin-panel/view-answers" mat-list-item>View/Edit Answers</a>
-          </td>
-          <td>
-            <a routerLink="/admin-panel/create-user" mat-list-item>Create/Edit User</a>
-          </td>
-          <td>
-            <a routerLink="/admin-panel/issues" mat-list-item>Issues</a>
-          </td>
-        </tr>
-      </table>
+      <mat-list role="list">
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/add-answers" mat-list-item>Add Answers</a>
+        </mat-list-item>
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/add-links" mat-list-item>Add/Edit Links</a>
+        </mat-list-item>
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/view-answers" mat-list-item>View/Edit Answers</a>
+        </mat-list-item>
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/create-user" mat-list-item>Create/Edit User</a>
+        </mat-list-item>
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/issues" mat-list-item>Issues</a>
+        </mat-list-item>
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/leave-details" mat-list-item>Leave Details</a>
+        </mat-list-item>
+        <mat-list-item role="listitem"><a routerLink="/admin-panel/attendance-details" mat-list-item>Attendance
+            Details</a>
+        </mat-list-item>
+      </mat-list>
 
 
     </div>
