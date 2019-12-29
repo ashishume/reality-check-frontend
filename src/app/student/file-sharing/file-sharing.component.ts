@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ApiService } from '../shared/services/api-service/api.service';
+import { ApiService } from '../../shared/services/api-service/api.service';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { LoaderService } from '../shared/services/loader-service/loader.service';
-import { ErrorServiceService } from '../shared/services/error-service/error-service.service';
+import { LoaderService } from '../../shared/services/loader-service/loader.service';
+import { ErrorServiceService } from '../../shared/services/error-service/error-service.service';
 import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-file-sharing',
   templateUrl: './file-sharing.component.html',
-  styles: []
+  styleUrls: ['./file-sharing.component.css']
 })
 export class FileSharingComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class FileSharingComponent implements OnInit {
     height: 'auto',
     placeholder: 'Select Teachers',
     customComparator: () => { },
-    // limitTo: options.length,
+    limitTo: 4,
     moreText: 'more',
     noResultsFound: 'No results found!',
     searchPlaceholder: 'Search',
@@ -29,6 +29,7 @@ export class FileSharingComponent implements OnInit {
 
   dropdownOptions = [];
   teachersArray = [];
+  message;
   public SharedFileFormGroup: FormGroup;
   ownSharedFiles;
   sharedFiles;
@@ -43,6 +44,7 @@ export class FileSharingComponent implements OnInit {
 
     this.SharedFileFormGroup = this.fb.group({
       sharedPeople: new FormControl('', Validators.required),
+      message: new FormControl('', Validators.required),
       upload: new FormControl('', Validators.required),
     })
   }
@@ -119,6 +121,7 @@ export class FileSharingComponent implements OnInit {
             const body = {
               fileType: this.selectedFile.type,
               ownerName: name,
+              message: this.message,
               username: username,
               sharedPeople: tempTeachersArray,
               fileUrl: url

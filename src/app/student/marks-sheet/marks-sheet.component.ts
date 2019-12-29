@@ -1,5 +1,5 @@
 import { AnswerHelperService } from 'src/app/section/shared/answer-helper/answer-helper.service';
-import { ApiService } from './../shared/services/api-service/api.service';
+import { ApiService } from '../../shared/services/api-service/api.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 

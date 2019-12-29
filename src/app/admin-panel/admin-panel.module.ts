@@ -2,7 +2,7 @@ import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { AdminPanelComponent } from './admin-panel.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/services/shared.module';
+import { SharedModule } from '../shared.module';
 import { AddAnswersComponent } from './add-answers/add-answers.component';
 import { UpdateAnswersComponent } from './update-answers/update-answers.component';
 import { AddLinksComponent } from './add-links/add-links.component';

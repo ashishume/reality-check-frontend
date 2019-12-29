@@ -6,7 +6,7 @@ import { WritingComponent } from './writing/writing.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReadingComponent } from './reading/reading.component';
-import { SharedModule } from '../shared/services/shared.module';
+import { SharedModule } from '../shared.module';
 import { SectionRoutingModule } from './section-routing.module';
 
 

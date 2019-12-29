@@ -1,7 +1,7 @@
 import { TeacherService } from './teacher-service/teacher.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/services/shared.module';
+import { SharedModule } from '../shared.module';
 import { TeacherComponent } from './teacher.component';
 import { TeacherRoutingModule } from './teacher-routing.module';
 import { UploadAnswerSheetComponent } from './upload-answer-sheet/upload-answer-sheet.component';

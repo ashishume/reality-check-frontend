@@ -23,17 +23,12 @@ import { MainNavComponent } from './shared/components/main-nav/main-nav.componen
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SnackBarComponent } from './shared/components/snack-bar/snack-bar.component';
 import { NavbarService } from './shared/services/navbar-service/navbar.service';
-import { SharedModule } from './shared/services/shared.module';
+import { SharedModule } from './shared.module';
 import { ErrorServiceService } from './shared/services/error-service/error-service.service';
-import { ResultsComponent } from './results/results.component';
-import { MarksSheetComponent } from './marks-sheet/marks-sheet.component';
 import { RaiseIssueFormComponent } from './raise-issue-form/raise-issue-form.component';
-import { ProgressComponent } from './progress/progress.component';
 import { SigninDialogComponent } from './shared/components/signin-dialog/signin-dialog.component';
 import { httpInterceptorProviders } from './shared/services/interceptor-service';
 import { AnswerHelperService } from './section/shared/answer-helper/answer-helper.service';
-import { ProfileComponent } from './profile/profile.component';
-import { FileSharingComponent } from './file-sharing/file-sharing.component';
 
 
 
@@ -44,15 +39,8 @@ import { FileSharingComponent } from './file-sharing/file-sharing.component';
     PageNotFoundComponent,
     MainNavComponent,
     SignInComponent,
-    ResultsComponent,
-    MarksSheetComponent,
     RaiseIssueFormComponent,
-    ProgressComponent,
     SigninDialogComponent,
-    ProfileComponent,
-    FileSharingComponent,
-
-
   ],
   imports: [
     AngularFireDatabaseModule,

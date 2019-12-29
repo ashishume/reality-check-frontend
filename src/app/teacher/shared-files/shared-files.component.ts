@@ -19,7 +19,7 @@ export class SharedFilesComponent implements OnInit {
     height: 'auto',
     placeholder: 'Select Students',
     customComparator: () => { },
-    // limitTo: options.length,
+    limitTo: 4,
     moreText: 'more',
     noResultsFound: 'No results found!',
     searchPlaceholder: 'Search',
@@ -34,6 +34,7 @@ export class SharedFilesComponent implements OnInit {
   SharedFiles;
   sharedFiles;
   students = [];
+  message;
   constructor(
     private apiService: ApiService,
     private fb: FormBuilder,
@@ -45,6 +46,7 @@ export class SharedFilesComponent implements OnInit {
     this.SharedFileFormGroup = this.fb.group({
       sharedPeople: new FormControl('', Validators.required),
       upload: new FormControl('', Validators.required),
+      message: new FormControl('', Validators.required),
     })
   }
 
@@ -88,6 +90,7 @@ export class SharedFilesComponent implements OnInit {
     this.apiService.fetchOwnSharedFiles(query).subscribe(ownSharedFiles => {
       if (ownSharedFiles.status == 200)
         this.ownSharedFiles = ownSharedFiles.body
+      
     })
 
   }
@@ -124,7 +127,8 @@ export class SharedFilesComponent implements OnInit {
               ownerName: name,
               username: username,
               sharedPeople: tempStudentsArray,
-              fileUrl: url
+              fileUrl: url,
+              message: this.message
             }
 
             this.apiService.shareFiles(body).subscribe((data: any) => {

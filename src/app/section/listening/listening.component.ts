@@ -81,7 +81,7 @@ export class ListeningComponent implements OnInit {
       this.onSubmitMarks()
       this.checkMarksStatus.subscribe(res => {
         if (res == true) {
-          this.route.navigate(['results'], {
+          this.route.navigate(['/student/results'], {
             queryParams:
             {
               testCompleteStatus: 'completed',
