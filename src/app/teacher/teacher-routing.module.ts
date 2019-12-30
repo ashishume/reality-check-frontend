@@ -1,5 +1,3 @@
-import { SharedFilesComponent } from './shared-files/shared-files.component';
-import { DocumentsComponent } from './documents/documents.component';
 import { TeacherComponent } from './teacher.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';

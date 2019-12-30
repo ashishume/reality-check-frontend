@@ -1,0 +1,72 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a routerLink='/admin-panel'>Back</a>
+
+            <form [formGroup]="DocumentsFormGroup" #DocumentsForm="ngForm"
+                (ngSubmit)="onSubmitDocuments(DocumentsForm)">
+                <h3>Add Document</h3>
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput autofocus ngModel formControlName="title" name="title">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Notes</mat-label>
+                    <textarea matInput rows="5" formControlName="notes" name="notes"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category" name="category">
+                        <mat-option value="">select a category</mat-option>
+                        <mat-option [value]="choose" *ngFor="let choose of categories">{{choose}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <input type="file" formControlName="fileUrl" name="fileUrl" class="input" required
+                    (change)="onFileSelected($event)">
+                <br>
+                <br>
+                <button mat-raised-button color="accent" style="width: 100%;"
+                    [disabled]="!DocumentsFormGroup.valid">Submit</button>
+                <br>
+                <br>
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            <h3>View Documents</h3>
+            <mat-form-field>
+                <mat-label>Select Category Teaching</mat-label>
+                <mat-select [(ngModel)]="category">
+                    <mat-option [value]="category" (click)="fetchDocumentsData(category)"
+                        *ngFor="let category of categories">
+                        {{category}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <br>
+
+            <div *ngFor="let list of documentsData">
+                <mat-card>
+                    <span style="float: right;">
+                        <button [routerLink]="['/view-document']" [queryParams]="{url:list.fileUrl}" color="accent"
+                            mat-fab>
+                            <i class="material-icons">
+                                visibility
+                            </i>
+                        </button>
+                    </span>
+                    <h4>{{list.title}}</h4>
+                    <p><b>Notes:</b>{{list.notes}}</p>
+                    <p><b>Shared by:</b> {{list.ownerName}}</p>
+                    <p class="date-font"> {{list.createdAt | date: 'medium'}}</p>
+                </mat-card>
+            </div>
+
+
+        </div>
+    </div>
+</div>

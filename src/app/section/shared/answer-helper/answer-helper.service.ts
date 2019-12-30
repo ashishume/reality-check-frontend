@@ -9,7 +9,7 @@ export class AnswerHelperService {
   constructor(private apiService: ApiService) { }
   getUserDetails = new Rx.Subject();
   getUsers() {
-    this.apiService.getUserDetails().subscribe(data => {
+    this.apiService.fetchStudentDetails().subscribe(data => {
       return this.getUserDetails.next(data.body);
     })
   }

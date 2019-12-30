@@ -1,3 +1,4 @@
+import { NavbarService } from 'src/app/shared/services/navbar-service/navbar.service';
 import { SigninDialogComponent } from './../shared/components/signin-dialog/signin-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth-service/auth.service';
@@ -20,8 +21,10 @@ export class SignInComponent implements OnInit {
     public authService: AuthService,
     private route: Router,
     public matDialog: MatDialog,
+    private nav: NavbarService,
     private titleService: Title,
   ) {
+    this.nav.visible = false;
     this.titleService.setTitle('Sign In')
   }
 

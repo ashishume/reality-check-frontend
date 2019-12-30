@@ -12,24 +12,22 @@
   </mat-sidenav>
   <mat-sidenav-content class="mat-sidenav-content">
     <span *ngIf="username">
+      <span *ngIf="nav.visible">
+        <mat-toolbar color="primary">
+          <span routerLink="/" style="cursor: pointer">Reality Check</span>
+          <span style="flex:1 1 auto;"></span>
+          <span *ngIf="username">
 
-      <mat-toolbar color="primary">
-
-        <span routerLink="/" style="cursor: pointer">Reality Check</span>
-        <span style="flex:1 1 auto;"></span>
-        <span *ngIf="username">
-
-          <div class="buttons">
-            <span [matMenuTriggerFor]="menu" class="navigate"><img src="../../../../assets/logout.png"
-                class="icon"></span>
-            <mat-menu #menu="matMenu">
-              <span mat-menu-item (click)="authService.SignOut()">Logout</span>
-            </mat-menu>
-          </div>
-        </span>
-
-
-      </mat-toolbar>
+            <div class="buttons">
+              <span [matMenuTriggerFor]="menu" class="navigate"><img src="../../../../assets/logout.png"
+                  class="icon"></span>
+              <mat-menu #menu="matMenu">
+                <span mat-menu-item (click)="authService.SignOut()">Logout</span>
+              </mat-menu>
+            </div>
+          </span>
+        </mat-toolbar>
+      </span>
     </span>
 
     <ng-content></ng-content>

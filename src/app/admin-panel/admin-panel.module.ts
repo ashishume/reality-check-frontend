@@ -1,3 +1,4 @@
+import { AddDocumentLinksComponent } from './add-document-links/add-document-links.component';
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { AdminPanelComponent } from './admin-panel.component';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ import { AttendanceDetailsComponent } from './attendance-details/attendance-deta
     UpdateUserComponent,
     IssuesComponent,
     LeaveDetailsComponent,
+    AddDocumentLinksComponent,
     AttendanceDetailsComponent,
   ],
   imports: [

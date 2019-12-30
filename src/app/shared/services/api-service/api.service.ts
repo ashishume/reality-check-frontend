@@ -31,6 +31,12 @@ export class ApiService {
   deleteUser(params) {
     return this.httpService.callApi('DELETEBYPARAMS', '', 'users', params);
   }
+
+  activateUser(params) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'users/activate', params);
+  }
+
+
   //*************USER APIs */
 
   getTestDetails(query) {
@@ -143,7 +149,14 @@ export class ApiService {
     return this.httpService.callApi('GET', '', 'users/student', '')
   }
 
+  //ADD DOCS LINKS
+  addDocumentsDetails(body) {
+    return this.httpService.callApi('POST', body, 'documents', '')
+  }
 
-
+  //FETCH DOCUMENTS LINKS DETAILS
+  fetchDocumentsDetails(query) {
+    return this.httpService.callApi('GETBYPARAMS', '', 'documents', query)
+  }
 
 }

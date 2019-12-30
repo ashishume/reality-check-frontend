@@ -54,4 +54,13 @@ export class TeacherService {
     { monthName: "November", month: 11 },
     { monthName: "December", month: 12 },
   ]
+
+  category = [
+    "READING",
+    "WRITING",
+    "LISTENING",
+    "SPEAKING",
+    "MISCELLANEOUS",
+  ]
+
 }

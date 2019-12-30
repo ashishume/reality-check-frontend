@@ -10,7 +10,7 @@ import { ErrorServiceService } from 'src/app/shared/services/error-service/error
   styleUrls: ['./leave-details.component.css']
 })
 export class LeaveDetailsComponent implements OnInit {
-
+  username;
   leaves;
   months = []
   years = [];
