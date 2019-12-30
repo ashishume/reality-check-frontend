@@ -1,3 +1,4 @@
+import { ViewDocumentComponent } from './view-document/view-document.component';
 import { AdminGuard } from './shared/guard/admin/admin.guard';
 import { AuthGuard } from './shared/guard/auth/auth-guard.service';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ import { TeacherGuard } from './shared/guard/teacher/teacher.guard';
 const routes: Routes = [
   { path: '', component: SignInComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'view-document', component: ViewDocumentComponent, canActivate: [AuthGuard] },
   {
     path: 'section',
     loadChildren: () => import('./section/section.module').then(m => m.SectionModule),

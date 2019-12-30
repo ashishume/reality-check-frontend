@@ -1,3 +1,4 @@
+import { ViewDocumentComponent } from './view-document/view-document.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
@@ -8,14 +9,18 @@ import { SnackBarComponent } from './shared/components/snack-bar/snack-bar.compo
 import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { ProgressComponent } from 'src/app/student/progress/progress.component';
 import { ProfileComponent } from './profile/profile.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     SnackBarComponent,
     LoaderComponent,
     ProfileComponent,
-    ProgressComponent],
+    ProgressComponent,
+    ViewDocumentComponent
+  ],
   imports: [
+    Ng2SearchPipeModule,
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
@@ -24,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
     SelectDropDownModule,
 
   ], exports: [
+    Ng2SearchPipeModule,
     SelectDropDownModule,
     SnackBarComponent,
     CommonModule,
@@ -32,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     FormsModule,
     ProfileComponent,
+    ViewDocumentComponent,
     LoaderComponent,
     ProgressComponent
   ]

@@ -39,40 +39,103 @@
             </form>
         </div>
 
-        <div class="col-sm-8">
-            <h2>View User</h2>
-            <div class="table-responsive">
+        <div class="col-sm-8" id="right-section">
 
-                <table class="table table-bordered">
-                    <tr>
-                        <td>Name</td>
-                        <td>Username</td>
-                        <td>Password</td>
-                        <td>User Type</td>
-                        <td>User Created</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                    </tr>
-                    <tr *ngFor="let user of userDetails">
-                        <td>{{user.name}}</td>
-                        <td>{{user.username}}</td>
-                        <td>{{user.password}}</td>
-                        <td>{{user.userType}}</td>
-                        <td>{{user.createdAt | date}}</td>
-                        <td>
-                            <i (click)="onEditUser(user)" class="material-icons">
-                                edit
-                            </i>
-                        </td>
-                        <td>
-                            <i (click)="onDeleteUser(user)" class="material-icons">
-                                delete_outline
-                            </i>
-                        </td>
-                    </tr>
-                </table>
 
-            </div>
+            <mat-tab-group>
+
+
+                <mat-tab label="Active Users">
+                    <ng-template matTabContent>
+                        <mat-form-field>
+                            <mat-label>Search...</mat-label>
+                            <input matInput autocomplete="off" type="text" [(ngModel)]="term">
+                        </mat-form-field>
+
+                        <!-- <h2>View User</h2> -->
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Username</td>
+                                    <td>Password</td>
+                                    <td>User Type</td>
+                                    <td>User Created</td>
+                                    <td>Edit</td>
+                                    <td>De Activate</td>
+                                </tr>
+                                <tr *ngFor="let user of userDetails | filter:term">
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.password}}</td>
+                                    <td>{{user.userType}}</td>
+                                    <td>{{user.createdAt | date}}</td>
+                                    <td>
+                                        <i (click)="onEditUser(user)" class="material-icons">
+                                            edit
+                                        </i>
+                                    </td>
+                                    <td>
+                                        <i (click)="onDeleteUser(user)" class="material-icons">
+                                            delete_outline
+                                        </i>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+
+                    </ng-template>
+                </mat-tab>
+
+                <mat-tab label="Deactivated Users">
+                    <ng-template matTabContent>
+                        <mat-form-field>
+                            <mat-label>Search...</mat-label>
+                            <input matInput autocomplete="off" type="text" [(ngModel)]="term">
+                        </mat-form-field>
+                        <!-- <h2>View User</h2> -->
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Username</td>
+                                    <td>Password</td>
+                                    <td>User Type</td>
+                                    <td>User Created</td>
+                                    <td>Edit</td>
+                                    <td>Activate</td>
+                                </tr>
+                                <tr *ngFor="let user of deActiveUserDetails | filter:term">
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.password}}</td>
+                                    <td>{{user.userType}}</td>
+                                    <td>{{user.createdAt | date}}</td>
+                                    <td>
+                                        <i (click)="onEditUser(user)" class="material-icons">
+                                            edit
+                                        </i>
+                                    </td>
+                                    <td>
+                                        <i (click)="onActivateUser(user)" class="material-icons">
+                                            done_outline
+                                        </i>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+
+
+                    </ng-template>
+                </mat-tab>
+            </mat-tab-group>
+
         </div>
     </div>
 </div>

@@ -87,7 +87,7 @@ export class WritingComponent implements OnInit {
 
   uploadImage(sheetNumber) {
     this.loader.show()
-    var newSheetNumber = sheetNumber.trim();
+    var newSheetNumber = sheetNumber;
     const name = localStorage.getItem('name')
     const username = localStorage.getItem('username')
     const date = new Date().getTime()

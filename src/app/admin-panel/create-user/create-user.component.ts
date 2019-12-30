@@ -19,6 +19,7 @@ export class CreateUserComponent implements OnInit {
   username;
   password;
   userType;
+  deActiveUserDetails = [];
   public CreateUserFormGroup: FormGroup;
   constructor(
     private apiService: ApiService,
@@ -42,8 +43,18 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {
     this.userTypes = this.helper.getUserTypes();
     this.apiService.getUserDetails().subscribe(data => {
+      let userDetails = [];
+      let deActiveUserDetails = [];
       if (data.status == 200) {
-        this.userDetails = data.body;
+        data.body.forEach(value => {
+          if (value.status == 1)
+            userDetails.push(value);
+          else {
+            deActiveUserDetails.push(value);
+          }
+        });
+        this.userDetails = userDetails;
+        this.deActiveUserDetails = deActiveUserDetails;
       }
 
     })
@@ -72,6 +83,8 @@ export class CreateUserComponent implements OnInit {
   onSubmitLoginForm(form) {
     this.apiService.createUser(form.value).subscribe(data => {
       if (data.status == 200) {
+        console.log(data);
+        
         this.ngOnInit()
       }
     })
@@ -80,12 +93,23 @@ export class CreateUserComponent implements OnInit {
   onDeleteUser(user) {
 
     const query = {
-      username: user.username
+      username: user.username,
     }
 
     this.apiService.deleteUser(query).subscribe(data => {
       if (data.status == 200)
-        this.ngOnInit()
+        this.ngOnInit();
+    })
+  }
+  onActivateUser(user) {
+
+    const query = {
+      username: user.username,
+    }
+
+    this.apiService.activateUser(query).subscribe(data => {
+      if (data.status == 200)
+        this.ngOnInit();
     })
   }
 

@@ -16,6 +16,7 @@ export class AttendanceDetailsComponent implements OnInit {
   public AttendanceFormGroup: FormGroup;
   todayDate: Date = new Date();
   date;
+  username;
   teachersList = [];
   attendanceInfo;
   currentDate;

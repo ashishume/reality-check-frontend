@@ -6,31 +6,10 @@ import { Injectable } from '@angular/core';
 export class NavbarService {
   visible: boolean;
   test: boolean;
-  // private typeOfUser;
   constructor() {
     this.visible = true;
     this.test = true;
-
-    // if (!this.typeOfUser) {
-    //   this.typeOfUser = localStorage.getItem('userType');
-    // }
-
-
   }
-  // activateRouter() {
-  //   this.typeOfUser = localStorage.getItem('userType');
-  // }
-  // get isAdmin(): string {
-  //   if (this.typeOfUser == 'Admin') {
-
-  //     return 'Admin';
-  //   }
-  // }
-  // get isTeacher(): string {
-  //   if (this.typeOfUser == 'Teacher') {
-  //     return 'Teacher';
-  //   }
-  // }
 
   hide() { this.visible = false; }
 

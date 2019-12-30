@@ -1,0 +1,21 @@
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.pdfFile,
+.top-layer {
+  position: absolute;
+  top: 0;
+  left: 200px;
+}
+
+img {
+  opacity: 0;
+  height: 900px;
+  width: 750px;
+  filter: alpha(opacity=100);
+}

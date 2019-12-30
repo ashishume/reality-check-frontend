@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
 import { Title } from '@angular/platform-browser';
+import { NavbarService } from '../shared/services/navbar-service/navbar.service';
 
 
 @Component({
@@ -17,10 +18,12 @@ export class DashboardComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: Router,
+    private nav: NavbarService,
     private snack: MatSnackBar,
     private matDialog: MatDialog,
     private titleService: Title
   ) {
+    this.nav.visible = true;
     this.titleService.setTitle('Dashboard')
   }
 

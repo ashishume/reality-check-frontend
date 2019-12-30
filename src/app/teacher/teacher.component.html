@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-
       <mat-tab-group class="mat-tab-groups" mat-align-tabs="center">
+        <mat-tab class="mat-tab" label="Teaching">
+          <ng-template matTabContent>
+            <app-documents></app-documents>
+          </ng-template>
+        </mat-tab>
         <mat-tab class="mat-tab" label="File Sharing">
           <ng-template matTabContent>
             <app-shared-files></app-shared-files>

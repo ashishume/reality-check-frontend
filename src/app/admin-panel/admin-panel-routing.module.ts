@@ -1,3 +1,4 @@
+import { AddDocumentLinksComponent } from './add-document-links/add-document-links.component';
 import { AttendanceDetailsComponent } from './attendance-details/attendance-details.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { IssuesComponent } from './issues/issues.component';
@@ -19,6 +20,7 @@ const route: Routes = [
   { path: 'create-user', component: CreateUserComponent },
   { path: 'leave-details', component: LeaveDetailsComponent },
   { path: 'attendance-details', component: AttendanceDetailsComponent },
+  { path: 'add-documents-links', component: AddDocumentLinksComponent },
 
   {
     path: '',

@@ -12,6 +12,7 @@ import { LeavesComponent } from './leaves/leaves.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { NoRightClickDirective } from '../no-right-click.directive';
 import { SharedFilesComponent } from './shared-files/shared-files.component';
+// import { ViewDocumentComponent } from './documents/view-document/view-document.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { SharedFilesComponent } from './shared-files/shared-files.component';
     LeavesComponent,
     DocumentsComponent,
     NoRightClickDirective,
-    SharedFilesComponent
+    SharedFilesComponent,
   ],
   imports: [
     CommonModule,

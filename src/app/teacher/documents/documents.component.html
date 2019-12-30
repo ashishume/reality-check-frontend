@@ -1,26 +1,40 @@
-<p>documents works!</p>
+<br>
 <div class="container">
     <div class="row">
-
         <div class="col-md-12">
-            <h3>Hello world</h3>
-            <span class="span">
+            <mat-form-field>
+                <mat-label>Select Category Teaching</mat-label>
+                <mat-select [(ngModel)]="category">
+                    <mat-option [value]="category" (click)="fetchDocumentsData(category)"
+                        *ngFor="let category of categories">{{category}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
 
-                <!-- <embed (contextmenu)="check($event)"
-                    src="https://firebasestorage.googleapis.com/v0/b/react-64d83.appspot.com/o/prateek_patidar_resume-1.pdf?alt=media&token=9144141c-2a09-40d6-a683-13abf6bbd72f#toolbar=0"
-                    type="application/pdf" width="100%" height="800px" /> -->
-                <!-- <embed (contextmenu)="check($event)"
-                    src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                    type="image/png" width="100%" height="800px" /> -->
-                <embed (contextmenu)="check($event)"
-                    src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                    type="image/jpg" class="image" width="100%" height="800px" />
 
-                <!-- <iframe width="99%" height="800px"
-                    src="https://firebasestorage.googleapis.com/v0/b/react-64d83.appspot.com/o/prateek_patidar_resume-1.pdf?alt=media&token=9144141c-2a09-40d6-a683-13abf6bbd72f#toolbar=0&navpanes=0">
-
-                </iframe> -->
-            </span>
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngFor="let list of documentsData">
+                <mat-card>
+                    <span style="float: right;">
+                        <button [routerLink]="['/view-document']" [queryParams]="{url:list.fileUrl}" color="accent"
+                            mat-fab>
+                            <i class="material-icons">
+                                visibility
+                            </i>
+                        </button>
+                    </span>
+                    <h4>{{list.title}}</h4>
+                    <p><b>Notes:</b>{{list.notes}}</p>
+                    <p><b>Shared by:</b> {{list.ownerName}}</p>
+                    <p class="date-font"> {{list.createdAt | date: 'medium'}}</p>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>
+
+<br>
+<br>
+<br>
