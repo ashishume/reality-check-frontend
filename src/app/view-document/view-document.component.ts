@@ -13,8 +13,9 @@ export class ViewDocumentComponent implements OnInit {
 
 
   @Input()
-  private html: SafeHtml;
-
+  public html: SafeHtml;
+  category;
+  
   constructor(
     private sanitizer: DomSanitizer,
     private nav: NavbarService,

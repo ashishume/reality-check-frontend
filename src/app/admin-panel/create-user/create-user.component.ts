@@ -56,7 +56,6 @@ export class CreateUserComponent implements OnInit {
         this.userDetails = userDetails;
         this.deActiveUserDetails = deActiveUserDetails;
       }
-
     })
   }
 
@@ -83,8 +82,6 @@ export class CreateUserComponent implements OnInit {
   onSubmitLoginForm(form) {
     this.apiService.createUser(form.value).subscribe(data => {
       if (data.status == 200) {
-        console.log(data);
-        
         this.ngOnInit()
       }
     })

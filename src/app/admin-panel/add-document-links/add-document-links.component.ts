@@ -14,6 +14,9 @@ import { finalize } from 'rxjs/operators';
 })
 export class AddDocumentLinksComponent implements OnInit {
   categories = [];
+  category;
+  tagsData = [];
+  // tags = new FormControl();
   public DocumentsFormGroup: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -24,12 +27,12 @@ export class AddDocumentLinksComponent implements OnInit {
     private apiService: ApiService
   ) {
     this.categories = this.teacher.category;
-
+    this.tagsData = this.teacher.tags;
     this.DocumentsFormGroup = this.fb.group(
       {
         fileUrl: new FormControl('', [Validators.required]),
         title: new FormControl('', [Validators.required]),
-        notes: new FormControl('', [Validators.required]),
+        tags: new FormControl('', [Validators.required]),
         category: new FormControl('', [Validators.required]),
       })
   }
@@ -45,6 +48,7 @@ export class AddDocumentLinksComponent implements OnInit {
   fileSource;
   selectedFile;
   documentsData;
+  filterCategory;
   onFileSelected(event) {
     this.actualDataSize = event.target.files[0].size;
     const reader = new FileReader();
@@ -70,7 +74,7 @@ export class AddDocumentLinksComponent implements OnInit {
             const body = {
               fileUrl: url,
               title: form.title,
-              notes: form.notes,
+              tags: form.tags,
               category: form.category,
               fileType: this.selectedFile.type,
               ownerName: localStorage.getItem('name'),
@@ -97,9 +101,44 @@ export class AddDocumentLinksComponent implements OnInit {
     const query = {
       category: category
     }
+    this.filterCategory = category;
     this.apiService.fetchDocumentsDetails(query).subscribe(result => {
-      if (result.status == 200)
+      if (result.status == 200) {
         this.documentsData = result.body;
+      }
+      else if (result.status == 204)
+        this.documentsData = [];
     })
   }
+
+
+  ApplyFilter(tag) {
+    const query = {
+      tags: tag,
+      category: this.filterCategory
+    }
+    this.apiService.fetchDocumentsDetails(query).subscribe(result => {
+      if (result.status == 200) {
+        this.documentsData = result.body;
+      }
+      else if (result.status == 204) {
+        this.documentsData = [];
+      }
+    })
+  }
+
+  deleteDocument(list) {
+    const query = {
+      _id: list._id
+    }
+    this.apiService.deleteDocumentsDetails(query).subscribe(result => {
+      if (result.status == 200) {
+        this.notify.showError(result.body.message);
+        this.documentsData = [];
+      }
+    })
+
+
+  }
 }
+

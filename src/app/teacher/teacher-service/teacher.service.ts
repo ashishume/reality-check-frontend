@@ -31,14 +31,14 @@ export class TeacherService {
   ]
 
   years = [
-    2017,
-    2018,
     2019,
     2020,
     2021,
     2022,
     2023,
-    2024
+    2024,
+    2025,
+    2026
   ]
   months = [
     { monthName: "January", month: 1 },
@@ -63,4 +63,10 @@ export class TeacherService {
     "MISCELLANEOUS",
   ]
 
+  tags = [
+    "GENERAL STUDENT",
+    "ACADEMIC STUDENT",
+    "TASK 1",
+    "TASK 2",
+  ]
 }

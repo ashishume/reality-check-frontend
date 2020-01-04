@@ -158,5 +158,10 @@ export class ApiService {
   fetchDocumentsDetails(query) {
     return this.httpService.callApi('GETBYPARAMS', '', 'documents', query)
   }
+  //DELETE DOCUMENTS LINKS DETAILS
+  deleteDocumentsDetails(query) {
+    return this.httpService.callApi('DELETEBYPARAMS', '', 'documents', query)
+  }
+
 
 }

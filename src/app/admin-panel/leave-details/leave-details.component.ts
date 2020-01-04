@@ -41,6 +41,8 @@ export class LeaveDetailsComponent implements OnInit {
     this.apiService.fetchTeacherDetails().subscribe(result => {
       if (result.status == 200)
         this.teacherDetails = result.body;
+      else if (result.status == 204)
+        this.teacherDetails = [];
     })
   }
 
@@ -55,6 +57,8 @@ export class LeaveDetailsComponent implements OnInit {
       if (res.status == 200) {
         this.leaves = res.body;
       }
+      else if (res.status == 204)
+        this.leaves = [];
     })
   }
 }

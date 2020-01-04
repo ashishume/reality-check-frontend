@@ -136,6 +136,8 @@ export class AttendanceComponent implements OnInit {
         this.attendanceInfo = attendanceInfo;
 
       }
+      else if (res.status == 204)
+        this.attendanceInfo = [];
     })
 
   }

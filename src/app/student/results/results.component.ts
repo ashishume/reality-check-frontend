@@ -45,6 +45,8 @@ export class ResultsComponent implements OnInit {
       if (data.status == 200) {
         this.viewAnswerDetails = data.body[0].answers;
       }
+      else if (data.status == 204)
+        this.viewAnswerDetails = [];
     })
   }
 

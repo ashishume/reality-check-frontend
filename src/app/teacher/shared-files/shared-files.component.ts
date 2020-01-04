@@ -66,6 +66,10 @@ export class SharedFilesComponent implements OnInit {
         this.students = res.body;
         this.dropdownOptions = this.students;
       }
+      else if (res.status == 204) {
+        this.students = [];
+        this.dropdownOptions = this.students;
+      }
     })
   }
 
@@ -81,7 +85,9 @@ export class SharedFilesComponent implements OnInit {
     }
     this.apiService.fetchSharedFiles(query).subscribe(sharedFiles => {
       if (sharedFiles.status == 200)
-        this.sharedFiles = sharedFiles.body
+        this.sharedFiles = sharedFiles.body;
+      else if (sharedFiles.status == 204)
+        this.sharedFiles = [];
     })
   }
 
@@ -94,7 +100,8 @@ export class SharedFilesComponent implements OnInit {
     this.apiService.fetchOwnSharedFiles(query).subscribe(ownSharedFiles => {
       if (ownSharedFiles.status == 200)
         this.ownSharedFiles = ownSharedFiles.body
-
+      else if (ownSharedFiles.status == 204)
+        this.ownSharedFiles = [];
     })
 
   }

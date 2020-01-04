@@ -1,4 +1,12 @@
-
-.date-font{
+.date-font {
   font-size: 13px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.insideSelect {
+  margin: 4px;
+  float: right;
 }

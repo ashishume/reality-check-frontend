@@ -39,6 +39,8 @@ export class AttendanceDetailsComponent implements OnInit {
     this.apiService.fetchTeacherDetails().subscribe(res => {
       if (res.status == 200)
         this.teachersList = res.body;
+      else if (res.status == 204)
+        this.teachersList = [];
     })
 
 
@@ -69,6 +71,8 @@ export class AttendanceDetailsComponent implements OnInit {
         this.attendanceInfo = attendanceInfo;
 
       }
+      else if (res.status == 204)
+        this.attendanceInfo = [];
     })
 
   }

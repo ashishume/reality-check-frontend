@@ -101,6 +101,8 @@ export class LeavesComponent implements OnInit {
       if (res.status == 200) {
         this.leaves = res.body;
       }
+      else if (res.status == 204)
+        this.leaves = [];
     })
 
   }

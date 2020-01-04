@@ -1,3 +1,11 @@
-.mat-form-field{
-    width: 100%;
+.mat-form-field {
+  width: 100%;
+}
+
+.date-font {
+  margin-top: 5px;
+}
+
+#delete {
+  float: right;
 }

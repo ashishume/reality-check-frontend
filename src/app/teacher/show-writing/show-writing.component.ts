@@ -27,10 +27,9 @@ export class ShowWritingComponent implements OnInit {
           let arrayUrl = result.link.split(" ")
           result.imageUrl = arrayUrl[0];
           result.pdfUrl = arrayUrl[1];
-
         })
-
-      }
+      } else if (data.status == 204)
+        this.studentDetails = [];
     })
   }
   updateMarks(list) {

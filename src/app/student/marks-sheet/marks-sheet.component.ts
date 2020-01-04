@@ -52,7 +52,8 @@ export class MarksSheetComponent implements OnInit {
           }
         })
         this.marksDetails = marksArray;
-      }
+      } else if (data.status == 204)
+        this.marksDetails = [];
 
     })
   }

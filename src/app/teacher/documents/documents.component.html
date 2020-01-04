@@ -15,21 +15,50 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div *ngFor="let list of documentsData">
-                <mat-card>
-                    <span style="float: right;">
-                        <button [routerLink]="['/view-document']" [queryParams]="{url:list.fileUrl}" color="accent"
-                            mat-fab>
-                            <i class="material-icons">
-                                visibility
-                            </i>
-                        </button>
-                    </span>
-                    <h4>{{list.title}}</h4>
-                    <p><b>Notes:</b>{{list.notes}}</p>
-                    <p><b>Shared by:</b> {{list.ownerName}}</p>
-                    <p class="date-font"> {{list.createdAt | date: 'medium'}}</p>
-                </mat-card>
+            <div *ngIf="documentsData">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-form-field>
+                            <input type="text" matInput placeholder="Search anything..." [(ngModel)]="keyword"
+                                autocomplete="off" />
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field>
+                            <mat-label>Tags</mat-label>
+                            <mat-select>
+                                <mat-option (click)="ApplyFilter(tag)" *ngFor="let tag of tagsData" [value]="tag">
+                                    {{tag}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+                <div *ngFor="let list of documentsData | filter:keyword">
+                    <mat-card>
+                        <span style="float: right;">
+                            <button [routerLink]="['/view-document']" [queryParams]="{url:list.fileUrl}" color="accent"
+                                mat-fab>
+                                <i class="material-icons">
+                                    visibility
+                                </i>
+                            </button>
+                        </span>
+                        <h4>{{list.title}}</h4>
+                        <p><b>Shared by:</b> {{list.ownerName}}</p>
+                        <mat-chip-list>
+                            <b>Tags:</b>
+                            <mat-chip *ngFor="let tag of list.tags" class="">{{tag | lowercase}}</mat-chip>
+                        </mat-chip-list>
+                        <p class="date-font"> {{list.createdAt | date: 'medium'}}</p>
+                    </mat-card>
+                    <br>
+                </div>
+            </div>
+            <div style="text-align: center;" *ngIf="!documentsData">
+                <p class="alert alert-warning"> Search for data</p>
             </div>
         </div>
     </div>
