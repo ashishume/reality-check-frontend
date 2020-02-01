@@ -67,7 +67,7 @@ export class WritingComponent implements OnInit {
     this.apiService.getTestDetails(query).subscribe(data => {
       data.body[0].testDetails.forEach(res => {
         if (this.testNumber == res.testNumber) {
-          this.pdfLink = res.readingLink
+          this.pdfLink = res.documentWritingLink;
         }
 
       })
